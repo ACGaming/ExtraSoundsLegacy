@@ -7,6 +7,7 @@ import net.minecraft.inventory.ClickType;
 import net.minecraft.inventory.Slot;
 
 import mod.acgaming.extrasounds.SoundManager;
+import mod.acgaming.extrasounds.config.ESConfig;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -16,27 +17,30 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class GuiContainerMixin
 {
     @Inject(at = @At("HEAD"), method = "initGui")
-    public void esOpenInventorySound(CallbackInfo ci)
+    public void esOpenGUISound(CallbackInfo ci)
     {
-        SoundManager.playSound(SoundEvents.UI_TOAST_IN, 2.0F, 1.5F);
+        if (ESConfig.esOpenCloseGUISound) SoundManager.playSound(SoundEvents.UI_TOAST_IN, 2.0F, 1.5F);
     }
 
     @Inject(at = @At("HEAD"), method = "onGuiClosed")
-    public void esCloseInventorySound(CallbackInfo ci)
+    public void esCloseGUISound(CallbackInfo ci)
     {
-        SoundManager.playSound(SoundEvents.UI_TOAST_OUT, 2.0F, 1.5F);
+        if (ESConfig.esOpenCloseGUISound) SoundManager.playSound(SoundEvents.UI_TOAST_OUT, 2.0F, 1.5F);
     }
 
     @Inject(at = @At("HEAD"), method = "handleMouseClick")
     protected void esSlotClickSound(Slot slotIn, int slotId, int mouseButton, ClickType type, CallbackInfo ci)
     {
-        if (slotIn != null)
+        if (ESConfig.esSlotClickSound)
         {
-            // PLACE SOUND
-            if (!Minecraft.getMinecraft().player.inventory.getItemStack().isEmpty()) SoundManager.playClickSound(Minecraft.getMinecraft().player.inventory.getItemStack());
+            if (slotIn != null)
+            {
+                // PLACE SOUND
+                if (!Minecraft.getMinecraft().player.inventory.getItemStack().isEmpty()) SoundManager.playClickSound(Minecraft.getMinecraft().player.inventory.getItemStack());
 
-            // PICK SOUND
-            if (!slotIn.getStack().isEmpty()) SoundManager.playClickSound(slotIn.getStack());
+                // PICK SOUND
+                if (!slotIn.getStack().isEmpty()) SoundManager.playClickSound(slotIn.getStack());
+            }
         }
     }
 }

@@ -32,11 +32,7 @@ public class SoundManager
 
     public static void playClickSound(ItemStack stackIn)
     {
-        if (stackIn.getItem() instanceof ItemFood)
-        {
-            playSound(SoundEvents.BLOCK_SLIME_STEP, 2.0F, 0.2F);
-        }
-        else if (OreDictionary.getOreIDs(stackIn).length > 0)
+        if (OreDictionary.getOreIDs(stackIn).length > 0)
         {
             for (int i : OreDictionary.getOreIDs(stackIn))
             {
@@ -58,7 +54,7 @@ public class SoundManager
                 }
                 else if (checkOreDictPrefix(i, "ingot") || checkOreDictPrefix(i, "nugget"))
                 {
-                    playSound(SoundEvents.BLOCK_ANVIL_PLACE, 2.0F, 0.2F);
+                    playSound(SoundEvents.BLOCK_ANVIL_PLACE, 2.0F, 0.1F);
                 }
                 else if (checkOreDictPrefix(i, "gem"))
                 {
@@ -73,6 +69,10 @@ public class SoundManager
                     playSound(SoundEvents.BLOCK_STONE_HIT, 2.0F, 0.4F);
                 }
             }
+        }
+        else if (stackIn.getItem() instanceof ItemFood)
+        {
+            playSound(SoundEvents.BLOCK_SLIME_STEP, 2.0F, 0.2F);
         }
         else
         {
