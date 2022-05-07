@@ -5,12 +5,10 @@
     "description": "Improve your clicks, scrolls and more with Extra Sounds.",
     "version": "${version}",
     "mcversion": "${mcversion}",
-    "url": "",
-    "updateUrl": "",
+    "url": "https://github.com/ACGaming/ExtraSoundsLegacy",
     "authorList": ["ACGaming"],
     "credits": "stashymane",
-    "logoFile": "",
-    "screenshots": [],
-    "dependencies": []
+    "useDependencyInformation": true,
+    "dependencies": ["mixinbooter"]
   }
 ]

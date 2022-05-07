@@ -24,7 +24,7 @@ public class EntityPlayerMixin
             {
                 float range = 0.1F;
                 float pitch = 1.0F + range * (1.0F * droppedItem.getItem().getItemStackLimit() / droppedItem.getCount()) - range / 2;
-                SoundManager.playSound(SoundEvents.BLOCK_LAVA_POP, pitch, 0.2F);
+                SoundManager.playSound(SoundEvents.BLOCK_LAVA_POP, pitch, 0.4F);
             }
         }
     }
