@@ -66,7 +66,7 @@ public class SoundManager
                 }
                 else if (checkOreDictPrefix(i, "dust"))
                 {
-                    playSound(SoundEvents.BLOCK_SAND_BREAK, 2.0F, 0.2F);
+                    playSound(SoundEvents.BLOCK_SAND_BREAK, 2.0F, 0.6F);
                 }
                 else
                 {

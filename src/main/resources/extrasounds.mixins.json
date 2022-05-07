@@ -3,7 +3,7 @@
   "refmap": "extrasounds.refmap.json",
   "minVersion": "0.8",
   "compatibilityLevel": "JAVA_8",
-  "mixins": ["InventoryPlayerMixin"],
+  "mixins": ["EntityPlayerMixin", "InventoryPlayerMixin"],
   "client": ["GuiContainerCreativeMixin", "GuiContainerMixin", "GuiInventoryMixin", "GuiNewChatMixin", "GuiTextFieldMixin", "MinecraftMixin"],
   "injectors": {
     "defaultRequire": 1
