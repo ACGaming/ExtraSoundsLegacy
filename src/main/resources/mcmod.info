@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "extrasounds",
+    "name": "Extra Sounds",
+    "description": "Improve your clicks, scrolls and more with Extra Sounds.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": ["ACGaming"],
+    "credits": "stashymane",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
