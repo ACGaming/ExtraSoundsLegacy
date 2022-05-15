@@ -52,6 +52,10 @@ public class SoundManager
                 {
                     playSound(SoundEvents.BLOCK_GRASS_HIT, 2.0F, 0.6F);
                 }
+                else if (checkOreDict(i, "wool"))
+                {
+                    playSound(SoundEvents.BLOCK_CLOTH_HIT, 2.0F, 0.4F);
+                }
                 else if (checkOreDictPrefix(i, "ingot") || checkOreDictPrefix(i, "nugget"))
                 {
                     playSound(SoundEvents.BLOCK_ANVIL_PLACE, 2.0F, 0.1F);
