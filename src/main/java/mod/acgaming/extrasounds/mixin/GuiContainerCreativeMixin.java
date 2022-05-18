@@ -18,7 +18,7 @@ public class GuiContainerCreativeMixin
     @Inject(at = @At("HEAD"), method = "handleMouseClick")
     protected void esSlotClickSound(Slot slotIn, int slotId, int mouseButton, ClickType type, CallbackInfo ci)
     {
-        if (ESConfig.esSlotClickSound)
+        if (ESConfig.soundToggles.esPickPlaceSound)
         {
             if (slotIn != null)
             {

@@ -16,9 +16,9 @@ public class GuiTextFieldMixin
     @Inject(at = @At("RETURN"), method = "textboxKeyTyped")
     public void esTypingSound(char chr, int modifiers, CallbackInfoReturnable<Boolean> cir)
     {
-        if (ESConfig.esTypingSound)
+        if (ESConfig.soundToggles.esTypingSound)
         {
-            if (cir.getReturnValue()) SoundManager.playSound(SoundEvents.BLOCK_NOTE_HAT, 2.0F, 0.2F);
+            if (cir.getReturnValue()) SoundManager.playSound(SoundEvents.BLOCK_NOTE_HAT, 2.0F, (float) ESConfig.soundVolume.esTypingSoundVolume);
         }
     }
 }

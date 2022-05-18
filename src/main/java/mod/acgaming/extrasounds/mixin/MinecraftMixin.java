@@ -16,6 +16,6 @@ public class MinecraftMixin
     @Inject(method = "processKeyBinds", at = @At(value = "FIELD", target = "Lnet/minecraft/entity/player/InventoryPlayer;currentItem:I"))
     private void esHotbarSlotSound(CallbackInfo info)
     {
-        if (ESConfig.esHotbarSound) SoundManager.playSound(SoundEvents.BLOCK_NOTE_HAT, 1.8F, 0.15F);
+        if (ESConfig.soundToggles.esHotbarSound) SoundManager.playSound(SoundEvents.BLOCK_NOTE_HAT, 1.8F, (float) ESConfig.soundVolume.esHotbarSoundVolume);
     }
 }

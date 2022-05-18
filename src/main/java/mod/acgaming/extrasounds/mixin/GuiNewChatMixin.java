@@ -21,12 +21,12 @@ public class GuiNewChatMixin
     {
         if (Minecraft.getMinecraft().player == null || displayOnly) return;
 
-        if (ESConfig.esMessageSound)
+        if (ESConfig.soundToggles.esMessageSound)
         {
-            SoundManager.playSound(SoundEvents.BLOCK_NOTE_HAT, 2.0F, 0.5F);
+            SoundManager.playSound(SoundEvents.BLOCK_NOTE_HAT, 2.0F, (float) ESConfig.soundVolume.esMessageSoundVolume);
         }
 
-        if (ESConfig.esMentionSound)
+        if (ESConfig.soundToggles.esMentionSound)
         {
             String msg = chatComponent.getUnformattedText();
             EntityPlayerSP player = Minecraft.getMinecraft().player;
@@ -37,7 +37,7 @@ public class GuiNewChatMixin
                 // AVOID SELF-PINGS
                 if (!msg.startsWith("<" + player.getName() + ">") || !msg.startsWith("<" + player.getDisplayNameString() + ">"))
                 {
-                    SoundManager.playSound(SoundEvents.BLOCK_NOTE_CHIME, 1.8F, 0.7F);
+                    SoundManager.playSound(SoundEvents.BLOCK_NOTE_CHIME, 1.8F, (float) ESConfig.soundVolume.esMentionSoundVolume);
                 }
             }
         }

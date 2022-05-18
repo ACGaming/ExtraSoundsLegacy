@@ -19,19 +19,19 @@ public class GuiContainerMixin
     @Inject(at = @At("HEAD"), method = "initGui")
     public void esOpenGUISound(CallbackInfo ci)
     {
-        if (ESConfig.esOpenCloseGUISound) SoundManager.playSound(SoundEvents.UI_TOAST_IN, 2.0F, 1.5F);
+        if (ESConfig.soundToggles.esOpenCloseGUISound) SoundManager.playSound(SoundEvents.UI_TOAST_IN, 2.0F, (float) ESConfig.soundVolume.esOpenCloseGUISoundVolume);
     }
 
     @Inject(at = @At("HEAD"), method = "onGuiClosed")
     public void esCloseGUISound(CallbackInfo ci)
     {
-        if (ESConfig.esOpenCloseGUISound) SoundManager.playSound(SoundEvents.UI_TOAST_OUT, 2.0F, 1.5F);
+        if (ESConfig.soundToggles.esOpenCloseGUISound) SoundManager.playSound(SoundEvents.UI_TOAST_OUT, 2.0F, (float) ESConfig.soundVolume.esOpenCloseGUISoundVolume);
     }
 
     @Inject(at = @At("HEAD"), method = "handleMouseClick")
     protected void esSlotClickSound(Slot slotIn, int slotId, int mouseButton, ClickType type, CallbackInfo ci)
     {
-        if (ESConfig.esSlotClickSound)
+        if (ESConfig.soundToggles.esPickPlaceSound)
         {
             if (slotIn != null)
             {

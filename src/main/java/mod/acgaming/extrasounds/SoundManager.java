@@ -10,6 +10,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.oredict.OreDictionary;
 
+import mod.acgaming.extrasounds.config.ESConfig;
+
 public class SoundManager
 {
     public static Random random = new Random();
@@ -38,49 +40,49 @@ public class SoundManager
             {
                 if (checkOreDictContains(i, "wood"))
                 {
-                    playSound(SoundEvents.BLOCK_WOOD_HIT, 2.0F, 0.2F);
+                    playSound(SoundEvents.BLOCK_WOOD_HIT, 2.0F, (float) ESConfig.soundVolume.esPickPlaceWoodSound);
                 }
                 else if (checkOreDict(i, "dirt") || checkOreDict(i, "gravel"))
                 {
-                    playSound(SoundEvents.BLOCK_GRAVEL_HIT, 2.0F, 0.2F);
+                    playSound(SoundEvents.BLOCK_GRAVEL_HIT, 2.0F, (float) ESConfig.soundVolume.esPickPlaceGravelSound);
                 }
                 else if (checkOreDict(i, "sand"))
                 {
-                    playSound(SoundEvents.BLOCK_SAND_HIT, 2.0F, 0.4F);
+                    playSound(SoundEvents.BLOCK_SAND_HIT, 2.0F, (float) ESConfig.soundVolume.esPickPlaceSandSound);
                 }
                 else if (checkOreDict(i, "grass"))
                 {
-                    playSound(SoundEvents.BLOCK_GRASS_HIT, 2.0F, 0.6F);
+                    playSound(SoundEvents.BLOCK_GRASS_HIT, 2.0F, (float) ESConfig.soundVolume.esPickPlaceGrassSound);
                 }
                 else if (checkOreDict(i, "wool"))
                 {
-                    playSound(SoundEvents.BLOCK_CLOTH_HIT, 2.0F, 0.4F);
+                    playSound(SoundEvents.BLOCK_CLOTH_HIT, 2.0F, (float) ESConfig.soundVolume.esPickPlaceWoolSound);
                 }
                 else if (checkOreDictPrefix(i, "ingot") || checkOreDictPrefix(i, "nugget"))
                 {
-                    playSound(SoundEvents.BLOCK_ANVIL_PLACE, 2.0F, 0.1F);
+                    playSound(SoundEvents.BLOCK_ANVIL_PLACE, 2.0F, (float) ESConfig.soundVolume.esPickPlaceMetalSound);
                 }
                 else if (checkOreDictPrefix(i, "gem"))
                 {
-                    playSound(SoundEvents.BLOCK_NOTE_CHIME, 2.0F, 0.2F);
+                    playSound(SoundEvents.BLOCK_NOTE_CHIME, 2.0F, (float) ESConfig.soundVolume.esPickPlaceGemSound);
                 }
                 else if (checkOreDictPrefix(i, "dust"))
                 {
-                    playSound(SoundEvents.BLOCK_SAND_BREAK, 2.0F, 0.6F);
+                    playSound(SoundEvents.BLOCK_SAND_BREAK, 2.0F, (float) ESConfig.soundVolume.esPickPlaceDustSound);
                 }
                 else
                 {
-                    playSound(SoundEvents.BLOCK_STONE_HIT, 2.0F, 0.4F);
+                    playSound(SoundEvents.BLOCK_STONE_HIT, 2.0F, (float) ESConfig.soundVolume.esPickPlaceDefaultSound);
                 }
             }
         }
         else if (stackIn.getItem() instanceof ItemFood)
         {
-            playSound(SoundEvents.BLOCK_SLIME_STEP, 2.0F, 0.2F);
+            playSound(SoundEvents.BLOCK_SLIME_STEP, 2.0F, (float) ESConfig.soundVolume.esPickPlaceFoodSound);
         }
         else
         {
-            playSound(SoundEvents.BLOCK_STONE_HIT, 2.0F, 0.4F);
+            playSound(SoundEvents.BLOCK_STONE_HIT, 2.0F, (float) ESConfig.soundVolume.esPickPlaceDefaultSound);
         }
     }
 
