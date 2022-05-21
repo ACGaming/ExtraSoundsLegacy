@@ -1,0 +1,110 @@
+{
+  "drop_item": {
+    "sounds": [
+      {
+        "name": "liquid/lavapop",
+        "pitch": 1.0,
+        "volume": 0.4
+      }
+    ]
+  },
+  "open_gui": {
+    "sounds": [
+      {
+        "name": "ui/toast/in",
+        "pitch": 2.0,
+        "volume": 1.0
+      }
+    ]
+  },
+  "close_gui": {
+    "sounds": [
+      {
+        "name": "ui/toast/out",
+        "pitch": 2.0,
+        "volume": 1.0
+      }
+    ]
+  },
+  "chat_message": {
+    "sounds": [
+      {
+        "name": "note/hat",
+        "pitch": 2.0,
+        "volume": 0.5
+      }
+    ]
+  },
+  "chat_mention": {
+    "sounds": [
+      {
+        "name": "note/icechime",
+        "pitch": 1.8,
+        "volume": 0.7
+      }
+    ]
+  },
+  "typing": {
+    "sounds": [
+      {
+        "name": "note/hat",
+        "pitch": 2.0,
+        "volume": 0.2
+      }
+    ]
+  },
+  "hotbar_slot": {
+    "sounds": [
+      {
+        "name": "note/hat",
+        "pitch": 1.8,
+        "volume": 0.15
+      }
+    ]
+  },
+  "open_book": {
+    "sounds": [
+      {
+        "name": "extrasounds:book_open",
+        "pitch": 1.0,
+        "volume": 1.0
+      }
+    ]
+  },
+  "close_book": {
+    "sounds": [
+      {
+        "name": "extrasounds:book_close",
+        "pitch": 1.0,
+        "volume": 1.0
+      }
+    ]
+  },
+  "creative_tab": {
+    "sounds": [
+      {
+        "name": "random/click",
+        "pitch": 1.0,
+        "volume": 0.4
+      }
+    ]
+  },
+  "scroll_page": {
+    "sounds": [
+      {
+        "name": "note/hat",
+        "pitch": 1.8,
+        "volume": 0.15
+      }
+    ]
+  },
+  "swap_hands": {
+    "sounds": [
+      {
+        "name": "mob/irongolem/throw",
+        "pitch": 1.0,
+        "volume": 0.8
+      }
+    ]
+  }
+}

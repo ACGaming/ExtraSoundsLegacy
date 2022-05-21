@@ -46,14 +46,26 @@ public class ESConfig
         @Config.Name("Hotbar Slot Change Sound")
         @Config.Comment("Play a sound when changing hotbar slots")
         public boolean esHotbarSound = true;
+
+        @Config.Name("Open/Close Book Sound")
+        @Config.Comment("Play a sound when opening and closing a writable book or recipe book")
+        public boolean esOpenCloseBookSound = true;
+
+        @Config.Name("Creative Tab Sound")
+        @Config.Comment("Play a sound when selecting a creative tab")
+        public boolean esCreativeTabSound = true;
+
+        @Config.Name("Scroll JEI Page Sound")
+        @Config.Comment("Play a sound when scrolling JEI pages")
+        public boolean esScrollJEIPageSound = true;
+
+        @Config.Name("Swap Hands Sound")
+        @Config.Comment("Play a sound when swapping hands to hold an item")
+        public boolean esSwapHandsSound = true;
     }
 
     public static class SoundVolume
     {
-        @Config.Name("Item Drop Sound Volume")
-        @Config.Comment("Volume of the sound when dropping items")
-        public double esDropItemSoundVolume = 0.4;
-
         @Config.Name("Default Item Pick/Place Sound Volume")
         @Config.Comment("Volume of the fallback sound when picking and placing items in GUIs")
         public double esPickPlaceDefaultSound = 0.4;
@@ -93,26 +105,6 @@ public class ESConfig
         @Config.Name("Food Item Pick/Place Sound Volume")
         @Config.Comment("Volume of the sound when picking and placing food items in GUIs")
         public double esPickPlaceFoodSound = 0.2;
-
-        @Config.Name("Open/Close GUI Sound Volume")
-        @Config.Comment("Volume of the sound when opening and closing GUIs")
-        public double esOpenCloseGUISoundVolume = 1.5;
-
-        @Config.Name("Chat Message Sound Volume")
-        @Config.Comment("Volume of the sound on chat messages")
-        public double esMessageSoundVolume = 0.5;
-
-        @Config.Name("Chat Mention Sound Volume")
-        @Config.Comment("Volume of the sound on player name mentions in chat")
-        public double esMentionSoundVolume = 0.7;
-
-        @Config.Name("Typing Sound Volume")
-        @Config.Comment("Volume of the sound when typing in text fields")
-        public double esTypingSoundVolume = 0.2;
-
-        @Config.Name("Hotbar Slot Change Sound Volume")
-        @Config.Comment("Volume of the sound when changing hotbar slots")
-        public double esHotbarSoundVolume = 0.15;
     }
 
     @Mod.EventBusSubscriber(modid = ExtraSounds.MODID)

@@ -1,10 +1,10 @@
 package mod.acgaming.extrasounds.mixin;
 
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.init.SoundEvents;
 
-import mod.acgaming.extrasounds.SoundManager;
 import mod.acgaming.extrasounds.config.ESConfig;
+import mod.acgaming.extrasounds.sound.ESSoundEvents;
+import mod.acgaming.extrasounds.sound.ESSoundManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -16,6 +16,6 @@ public class InventoryPlayerMixin
     @Inject(at = @At("RETURN"), method = "changeCurrentItem")
     private void esHotbarScrollSound(CallbackInfo info)
     {
-        if (ESConfig.soundToggles.esHotbarSound) SoundManager.playSound(SoundEvents.BLOCK_NOTE_HAT, 1.8F, (float) ESConfig.soundVolume.esHotbarSoundVolume);
+        if (ESConfig.soundToggles.esHotbarSound) ESSoundManager.playSound(ESSoundEvents.hotbar_slot);
     }
 }

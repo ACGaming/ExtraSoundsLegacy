@@ -18,7 +18,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'org.spongepowered.mixin'
 
-version = "1.12.2-1.0.1"
+version = "1.12.2-1.1.0"
 group = "mod.acgaming.extrasounds"
 archivesBaseName = "ExtraSounds"
 
@@ -67,6 +67,7 @@ repositories {
 
 dependencies {
 	deobfCompile "zone.rong:mixinbooter:4.2"
+	deobfCompile "curse.maven:jei-238222:3043174"
 }
 
 mixin {

@@ -1,4 +1,4 @@
-package mod.acgaming.extrasounds;
+package mod.acgaming.extrasounds.sound;
 
 import java.util.Random;
 
@@ -8,11 +8,14 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
 import mod.acgaming.extrasounds.config.ESConfig;
 
-public class SoundManager
+@SideOnly(Side.CLIENT)
+public class ESSoundManager
 {
     public static Random random = new Random();
     private static long lastPlayed = System.currentTimeMillis();
@@ -23,6 +26,16 @@ public class SoundManager
         if (now - lastPlayed > 5)
         {
             Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getRecord(snd, pitch - 0.1F + randomOffset(), volume));
+            lastPlayed = now;
+        }
+    }
+
+    public static void playSound(SoundEvent snd)
+    {
+        long now = System.currentTimeMillis();
+        if (now - lastPlayed > 5)
+        {
+            Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getRecord(snd, 0.9F + randomOffset(), 1.0F));
             lastPlayed = now;
         }
     }

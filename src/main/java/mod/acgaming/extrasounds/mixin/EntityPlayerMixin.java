@@ -2,11 +2,11 @@ package mod.acgaming.extrasounds.mixin;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 
-import mod.acgaming.extrasounds.SoundManager;
 import mod.acgaming.extrasounds.config.ESConfig;
+import mod.acgaming.extrasounds.sound.ESSoundEvents;
+import mod.acgaming.extrasounds.sound.ESSoundManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -24,7 +24,7 @@ public class EntityPlayerMixin
             {
                 float range = 0.1F;
                 float pitch = 1.0F + range * (1.0F * droppedItem.getItem().getItemStackLimit() / droppedItem.getCount()) - range / 2;
-                SoundManager.playSound(SoundEvents.BLOCK_LAVA_POP, pitch, (float) ESConfig.soundVolume.esDropItemSoundVolume);
+                ESSoundManager.playSound(ESSoundEvents.drop_item, pitch, 1.0F);
             }
         }
     }

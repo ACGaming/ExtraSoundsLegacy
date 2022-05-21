@@ -1,10 +1,10 @@
 package mod.acgaming.extrasounds.mixin;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.init.SoundEvents;
 
-import mod.acgaming.extrasounds.SoundManager;
 import mod.acgaming.extrasounds.config.ESConfig;
+import mod.acgaming.extrasounds.sound.ESSoundEvents;
+import mod.acgaming.extrasounds.sound.ESSoundManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -16,6 +16,12 @@ public class MinecraftMixin
     @Inject(method = "processKeyBinds", at = @At(value = "FIELD", target = "Lnet/minecraft/entity/player/InventoryPlayer;currentItem:I"))
     private void esHotbarSlotSound(CallbackInfo info)
     {
-        if (ESConfig.soundToggles.esHotbarSound) SoundManager.playSound(SoundEvents.BLOCK_NOTE_HAT, 1.8F, (float) ESConfig.soundVolume.esHotbarSoundVolume);
+        if (ESConfig.soundToggles.esHotbarSound) ESSoundManager.playSound(ESSoundEvents.hotbar_slot);
+    }
+
+    @Inject(method = "processKeyBinds", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/NetHandlerPlayClient;sendPacket(Lnet/minecraft/network/Packet;)V"))
+    private void esSwapHandsSound(CallbackInfo info)
+    {
+        if (ESConfig.soundToggles.esSwapHandsSound) ESSoundManager.playSound(ESSoundEvents.swap_hands);
     }
 }
