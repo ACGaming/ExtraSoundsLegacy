@@ -3,6 +3,7 @@
   "refmap": "extrasounds.refmap.json",
   "minVersion": "0.8",
   "compatibilityLevel": "JAVA_8",
+  "plugin": "mod.acgaming.extrasounds.config.ESMixinConfigPlugin",
   "mixins": ["EntityPlayerMixin", "IngredientGridWithNavigationMixin", "InventoryPlayerMixin"],
   "client": ["GuiContainerCreativeMixin", "GuiContainerMixin", "GuiInventoryMixin", "GuiNewChatMixin", "GuiRecipeBookMixin", "GuiScreenBookMixin", "GuiTextFieldMixin", "MinecraftMixin"],
   "injectors": {
