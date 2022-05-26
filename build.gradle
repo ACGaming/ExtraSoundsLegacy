@@ -47,6 +47,7 @@ jar {
         attributes 'FMLCorePlugin': 'mod.acgaming.extrasounds.core.ESLoadingPlugin'
         attributes 'FMLCorePluginContainsFMLMod': 'true'
         attributes 'ForceLoadAsMod': 'true'
+        attributes 'ModSide': 'CLIENT'
     }
 }
 
@@ -68,6 +69,7 @@ repositories {
 dependencies {
 	deobfCompile "zone.rong:mixinbooter:4.2"
 	deobfCompile "curse.maven:jei-238222:3043174"
+	//deobfCompile "curse.maven:had-enough-items-557549:3801373"
 }
 
 mixin {
