@@ -92,9 +92,9 @@
   "scroll_page": {
     "sounds": [
       {
-        "name": "note/hat",
-        "pitch": 1.8,
-        "volume": 0.15
+        "name": "mob/chicken/plop",
+        "pitch": 0.4,
+        "volume": 0.2
       }
     ]
   },
