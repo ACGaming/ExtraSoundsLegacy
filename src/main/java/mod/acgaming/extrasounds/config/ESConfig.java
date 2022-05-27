@@ -106,6 +106,10 @@ public class ESConfig
         @Config.Comment("Volume of the sound when picking and placing snow items in GUIs")
         public double esPickPlaceSnowSound = 0.6;
 
+        @Config.Name("Armor Item Pick/Place Sound Volume")
+        @Config.Comment("Volume of the sound when picking and placing armor items in GUIs")
+        public double esPickPlaceArmorSound = 0.8;
+
         @Config.Name("Food Item Pick/Place Sound Volume")
         @Config.Comment("Volume of the sound when picking and placing food items in GUIs")
         public double esPickPlaceFoodSound = 0.2;

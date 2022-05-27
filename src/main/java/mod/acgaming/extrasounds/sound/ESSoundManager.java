@@ -108,27 +108,27 @@ public class ESSoundManager
         {
             if (((ItemArmor) stackIn.getItem()).getArmorMaterial().equals(ItemArmor.ArmorMaterial.LEATHER))
             {
-                playSound(SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.0F, 0.8F);
+                playSound(SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.0F, (float) ESConfig.soundVolume.esPickPlaceArmorSound);
             }
             else if (((ItemArmor) stackIn.getItem()).getArmorMaterial().equals(ItemArmor.ArmorMaterial.CHAIN))
             {
-                playSound(SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 1.0F, 0.8F);
+                playSound(SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 1.0F, (float) ESConfig.soundVolume.esPickPlaceArmorSound);
             }
             else if (((ItemArmor) stackIn.getItem()).getArmorMaterial().equals(ItemArmor.ArmorMaterial.GOLD))
             {
-                playSound(SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 1.0F, 0.8F);
+                playSound(SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 1.0F, (float) ESConfig.soundVolume.esPickPlaceArmorSound);
             }
             else if (((ItemArmor) stackIn.getItem()).getArmorMaterial().equals(ItemArmor.ArmorMaterial.IRON))
             {
-                playSound(SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.0F, 0.8F);
+                playSound(SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.0F, (float) ESConfig.soundVolume.esPickPlaceArmorSound);
             }
             else if (((ItemArmor) stackIn.getItem()).getArmorMaterial().equals(ItemArmor.ArmorMaterial.DIAMOND))
             {
-                playSound(SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1.0F, 0.8F);
+                playSound(SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1.0F, (float) ESConfig.soundVolume.esPickPlaceArmorSound);
             }
             else
             {
-                playSound(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0F, 0.8F);
+                playSound(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0F, (float) ESConfig.soundVolume.esPickPlaceArmorSound);
             }
         }
         else
