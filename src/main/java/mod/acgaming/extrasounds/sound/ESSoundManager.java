@@ -84,6 +84,10 @@ public class ESSoundManager
                 {
                     playSound(SoundEvents.BLOCK_SAND_BREAK, 2.0F, (float) ESConfig.soundVolume.esPickPlaceDustSound);
                 }
+                else if (checkOreDictPrefix(i, "snow"))
+                {
+                    playSound(SoundEvents.BLOCK_SNOW_BREAK, 2.0F, (float) ESConfig.soundVolume.esPickPlaceSnowSound);
+                }
                 else
                 {
                     playSound(SoundEvents.BLOCK_STONE_HIT, 2.0F, (float) ESConfig.soundVolume.esPickPlaceDefaultSound);

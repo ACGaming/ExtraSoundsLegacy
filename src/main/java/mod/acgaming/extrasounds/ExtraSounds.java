@@ -6,6 +6,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
+import mod.acgaming.extrasounds.sound.ESOreDictionary;
 import mod.acgaming.extrasounds.sound.ESSoundEvents;
 
 @Mod(modid = ExtraSounds.MODID, name = ExtraSounds.NAME, version = ExtraSounds.VERSION, acceptedMinecraftVersions = "[1.12.2]", dependencies = ExtraSounds.DEPENDENCIES, clientSideOnly = true)
@@ -26,6 +27,7 @@ public class ExtraSounds
     @Mod.EventHandler
     public void init(FMLInitializationEvent event)
     {
+        ESOreDictionary.init();
         LOGGER.info("Extra Sounds initialized");
     }
 }

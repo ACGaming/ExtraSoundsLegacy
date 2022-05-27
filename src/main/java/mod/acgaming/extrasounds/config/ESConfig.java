@@ -99,8 +99,12 @@ public class ESConfig
         public double esPickPlaceGemSound = 0.2;
 
         @Config.Name("Dust Item Pick/Place Sound Volume")
-        @Config.Comment("Volume of the sound when picking and placing gem items in GUIs")
+        @Config.Comment("Volume of the sound when picking and placing dust items in GUIs")
         public double esPickPlaceDustSound = 0.6;
+
+        @Config.Name("Snow Item Pick/Place Sound Volume")
+        @Config.Comment("Volume of the sound when picking and placing snow items in GUIs")
+        public double esPickPlaceSnowSound = 0.6;
 
         @Config.Name("Food Item Pick/Place Sound Volume")
         @Config.Comment("Volume of the sound when picking and placing food items in GUIs")
