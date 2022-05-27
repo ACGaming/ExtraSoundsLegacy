@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundEvent;
@@ -86,13 +87,18 @@ public class ESSoundManager
                 }
                 else if (checkOreDictPrefix(i, "snow"))
                 {
-                    playSound(SoundEvents.BLOCK_SNOW_BREAK, 2.0F, (float) ESConfig.soundVolume.esPickPlaceSnowSound);
+                    playSound(SoundEvents.BLOCK_SNOW_HIT, 2.0F, (float) ESConfig.soundVolume.esPickPlaceSnowSound);
                 }
                 else
                 {
                     playSound(SoundEvents.BLOCK_STONE_HIT, 2.0F, (float) ESConfig.soundVolume.esPickPlaceDefaultSound);
                 }
             }
+        }
+        else if (stackIn.getItem() instanceof ItemBlock)
+        {
+            ItemBlock itemBlock = (ItemBlock) stackIn.getItem();
+            playSound(itemBlock.getBlock().getSoundType().getHitSound(), 2.0F, (float) ESConfig.soundVolume.esPickPlaceDefaultSound);
         }
         else if (stackIn.getItem() instanceof ItemFood)
         {
