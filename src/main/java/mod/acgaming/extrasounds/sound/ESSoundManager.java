@@ -5,6 +5,7 @@ import java.util.Random;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundEvent;
@@ -92,6 +93,33 @@ public class ESSoundManager
         else if (stackIn.getItem() instanceof ItemFood)
         {
             playSound(SoundEvents.BLOCK_SLIME_STEP, 2.0F, (float) ESConfig.soundVolume.esPickPlaceFoodSound);
+        }
+        else if (stackIn.getItem() instanceof ItemArmor)
+        {
+            if (((ItemArmor) stackIn.getItem()).getArmorMaterial().equals(ItemArmor.ArmorMaterial.LEATHER))
+            {
+                playSound(SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.0F, 0.8F);
+            }
+            else if (((ItemArmor) stackIn.getItem()).getArmorMaterial().equals(ItemArmor.ArmorMaterial.CHAIN))
+            {
+                playSound(SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 1.0F, 0.8F);
+            }
+            else if (((ItemArmor) stackIn.getItem()).getArmorMaterial().equals(ItemArmor.ArmorMaterial.GOLD))
+            {
+                playSound(SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 1.0F, 0.8F);
+            }
+            else if (((ItemArmor) stackIn.getItem()).getArmorMaterial().equals(ItemArmor.ArmorMaterial.IRON))
+            {
+                playSound(SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.0F, 0.8F);
+            }
+            else if (((ItemArmor) stackIn.getItem()).getArmorMaterial().equals(ItemArmor.ArmorMaterial.DIAMOND))
+            {
+                playSound(SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1.0F, 0.8F);
+            }
+            else
+            {
+                playSound(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0F, 0.8F);
+            }
         }
         else
         {
