@@ -57,6 +57,7 @@ public class ESSoundManager
                 {
                     playSound(SoundEvents.BLOCK_WOOD_HIT, 2.0F, (float) ESConfig.soundVolume.esPickPlaceWoodSound);
                 }
+
                 else if (checkOreDict(i, "dirt") || checkOreDict(i, "gravel"))
                 {
                     playSound(SoundEvents.BLOCK_GRAVEL_HIT, 2.0F, (float) ESConfig.soundVolume.esPickPlaceGravelSound);
@@ -73,6 +74,11 @@ public class ESSoundManager
                 {
                     playSound(SoundEvents.BLOCK_CLOTH_HIT, 2.0F, (float) ESConfig.soundVolume.esPickPlaceWoolSound);
                 }
+                else if (checkOreDict(i, "snow"))
+                {
+                    playSound(SoundEvents.BLOCK_SNOW_HIT, 2.0F, (float) ESConfig.soundVolume.esPickPlaceSnowSound);
+                }
+
                 else if (checkOreDictPrefix(i, "ingot") || checkOreDictPrefix(i, "nugget"))
                 {
                     playSound(SoundEvents.BLOCK_ANVIL_PLACE, 2.0F, (float) ESConfig.soundVolume.esPickPlaceMetalSound);
@@ -85,10 +91,7 @@ public class ESSoundManager
                 {
                     playSound(SoundEvents.BLOCK_SAND_BREAK, 2.0F, (float) ESConfig.soundVolume.esPickPlaceDustSound);
                 }
-                else if (checkOreDictPrefix(i, "snow"))
-                {
-                    playSound(SoundEvents.BLOCK_SNOW_HIT, 2.0F, (float) ESConfig.soundVolume.esPickPlaceSnowSound);
-                }
+
                 else
                 {
                     playSound(SoundEvents.BLOCK_STONE_HIT, 2.0F, (float) ESConfig.soundVolume.esPickPlaceDefaultSound);
