@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class InventoryPlayerMixin
 {
     @Inject(at = @At("RETURN"), method = "changeCurrentItem")
-    private void esHotbarScrollSound(CallbackInfo info)
+    public void esHotbarScrollSound(CallbackInfo info)
     {
         if (ESConfig.soundToggles.esHotbarSound) ESSoundManager.playSound(ESSoundEvents.hotbar_slot);
     }

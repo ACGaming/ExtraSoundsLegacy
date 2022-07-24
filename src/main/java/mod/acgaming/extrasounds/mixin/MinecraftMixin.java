@@ -14,13 +14,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MinecraftMixin
 {
     @Inject(method = "processKeyBinds", at = @At(value = "FIELD", target = "Lnet/minecraft/entity/player/InventoryPlayer;currentItem:I"))
-    private void esHotbarSlotSound(CallbackInfo info)
+    public void esHotbarSlotSound(CallbackInfo info)
     {
         if (ESConfig.soundToggles.esHotbarSound) ESSoundManager.playSound(ESSoundEvents.hotbar_slot);
     }
 
     @Inject(method = "processKeyBinds", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/NetHandlerPlayClient;sendPacket(Lnet/minecraft/network/Packet;)V"))
-    private void esSwapHandsSound(CallbackInfo info)
+    public void esSwapHandsSound(CallbackInfo info)
     {
         if (ESConfig.soundToggles.esSwapHandsSound) ESSoundManager.playSound(ESSoundEvents.swap_hands);
     }

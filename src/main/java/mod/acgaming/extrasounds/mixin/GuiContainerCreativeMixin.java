@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class GuiContainerCreativeMixin
 {
     @Inject(at = @At("HEAD"), method = "handleMouseClick")
-    protected void esSlotClickSound(Slot slotIn, int slotId, int mouseButton, ClickType type, CallbackInfo ci)
+    public void esSlotClickSound(Slot slotIn, int slotId, int mouseButton, ClickType type, CallbackInfo ci)
     {
         if (ESConfig.soundToggles.esPickPlaceSound)
         {
@@ -34,7 +34,7 @@ public class GuiContainerCreativeMixin
     }
 
     @Inject(at = @At("HEAD"), method = "setCurrentCreativeTab")
-    protected void esTabClickSound(CreativeTabs tab, CallbackInfo ci)
+    public void esTabClickSound(CreativeTabs tab, CallbackInfo ci)
     {
         if (ESConfig.soundToggles.esCreativeTabSound)
         {

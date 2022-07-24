@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class GuiNewChatMixin
 {
     @Inject(at = @At("RETURN"), method = "setChatLine")
-    private void esMessageMentionSound(ITextComponent chatComponent, int chatLineId, int updateCounter, boolean displayOnly, CallbackInfo ci)
+    public void esMessageMentionSound(ITextComponent chatComponent, int chatLineId, int updateCounter, boolean displayOnly, CallbackInfo ci)
     {
         if (Minecraft.getMinecraft().player == null || displayOnly) return;
 

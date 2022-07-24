@@ -65,7 +65,7 @@
   "open_book": {
     "sounds": [
       {
-        "name": "extrasounds:book_open",
+        "name": "extrasounds:book/open",
         "pitch": 1.0,
         "volume": 1.0
       }
@@ -74,7 +74,7 @@
   "close_book": {
     "sounds": [
       {
-        "name": "extrasounds:book_close",
+        "name": "extrasounds:book/close",
         "pitch": 1.0,
         "volume": 1.0
       }
@@ -105,6 +105,73 @@
         "pitch": 1.0,
         "volume": 0.8
       }
+    ]
+  },
+  "pull_bow": {
+    "sounds": [
+      {
+        "name": "extrasounds:bow/pull",
+        "pitch": 1.2,
+        "volume": 0.4
+      }
+    ]
+  },
+  "place_boat": {
+    "sounds": [
+      "dig/wood1",
+      "dig/wood2",
+      "dig/wood3",
+      "dig/wood4"
+    ]
+  },
+  "place_minecart": {
+    "sounds": [
+      {
+        "name": "random/anvil_land",
+        "pitch": 1.0,
+        "volume": 0.4
+      }
+    ]
+  },
+  "plant_flower_pot": {
+    "sounds": [
+      "dig/grass1",
+      "dig/grass2",
+      "dig/grass3",
+      "dig/grass4"
+    ]
+  },
+  "teleport_ender_pearl": {
+    "sounds": [
+      "mob/endermen/portal",
+      "mob/endermen/portal2"
+    ]
+  },
+  "jukebox_insert": {
+    "sounds": [
+      {
+        "name": "random/click",
+        "pitch": 1.0,
+        "volume": 1.0
+      }
+    ]
+  },
+  "jukebox_eject": {
+    "sounds": [
+      {
+        "name": "random/bow",
+        "pitch": 1.0,
+        "volume": 1.0
+      }
+    ]
+  },
+  "use_spawn_egg": {
+    "sounds": [
+      "extrasounds:spawn_egg/use1",
+      "extrasounds:spawn_egg/use2",
+      "extrasounds:spawn_egg/use3",
+      "extrasounds:spawn_egg/use4",
+      "extrasounds:spawn_egg/use5"
     ]
   }
 }

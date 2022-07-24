@@ -62,6 +62,34 @@ public class ESConfig
         @Config.Name("Swap Hands Sound")
         @Config.Comment("Play a sound when swapping hands to hold an item")
         public boolean esSwapHandsSound = true;
+
+        @Config.Name("Pull Bow Sound")
+        @Config.Comment("Play a sound when pulling a bow")
+        public boolean esPullBowSound = true;
+
+        @Config.Name("Ender Pearl Teleport Sound")
+        @Config.Comment("Play a sound when teleporting via ender pearls")
+        public boolean esEnderPearlTeleportSound = true;
+
+        @Config.Name("Place Boat Sound")
+        @Config.Comment("Play a sound when placing a boat")
+        public boolean esPlaceBoatSound = true;
+
+        @Config.Name("Place Minecart Sound")
+        @Config.Comment("Play a sound when placing a minecart")
+        public boolean esPlaceMinecartSound = true;
+
+        @Config.Name("Jukebox Interact Sound")
+        @Config.Comment("Play a sound when interacting with a jukebox")
+        public boolean esJukeboxInteractSound = true;
+
+        @Config.Name("Flower Pot Plant Sound")
+        @Config.Comment("Play a sound when planting flowers in a flower pot")
+        public boolean esFlowerPotPlantSound = true;
+
+        @Config.Name("Spawn Egg Sound")
+        @Config.Comment("Play a sound when spawning an entity with a spawn egg")
+        public boolean esUseSpawnEggSound = true;
     }
 
     public static class SoundVolume
