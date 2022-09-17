@@ -22,6 +22,6 @@ public class ItemMinecartMixin
     @Inject(method = "onItemUse", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;spawnEntity(Lnet/minecraft/entity/Entity;)Z"))
     public void esPlaceMinecartSound(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ, CallbackInfoReturnable<EnumActionResult> cir)
     {
-        if (ESConfig.soundToggles.esPlaceMinecartSound) ESSoundManager.playSound(ESSoundEvents.place_minecart);
+        if (ESConfig.soundToggles.esPlaceMinecartSound) ESSoundManager.playSoundWorld(ESSoundEvents.place_minecart, pos);
     }
 }

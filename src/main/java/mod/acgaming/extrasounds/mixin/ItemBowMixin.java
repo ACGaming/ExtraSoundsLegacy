@@ -22,9 +22,9 @@ public abstract class ItemBowMixin
     @Inject(method = "onItemRightClick", at = @At(value = "RETURN"))
     public void esPullBowSound(World worldIn, EntityPlayer playerIn, EnumHand handIn, CallbackInfoReturnable<ActionResult<ItemStack>> cir)
     {
-        if (ESConfig.soundToggles.esPullBowSound)
+        if (worldIn.isRemote && ESConfig.soundToggles.esPullBowSound)
         {
-            if (!this.findAmmo(playerIn).isEmpty() || playerIn.capabilities.isCreativeMode) ESSoundManager.playSound(ESSoundEvents.pull_bow);
+            if (!this.findAmmo(playerIn).isEmpty() || playerIn.capabilities.isCreativeMode) ESSoundManager.playSoundPlayer(ESSoundEvents.pull_bow);
         }
     }
 

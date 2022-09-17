@@ -1,157 +1,173 @@
 package mod.acgaming.extrasounds.sound;
 
-import java.util.Random;
+import java.util.Map;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemFood;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import mod.acgaming.extrasounds.ExtraSounds;
 import mod.acgaming.extrasounds.config.ESConfig;
 
-@SideOnly(Side.CLIENT)
+@Mod.EventBusSubscriber(Side.CLIENT)
 public class ESSoundManager
 {
-    public static Random random = new Random();
+    public static Map<Item, String> soundItemMap = new Object2ObjectOpenHashMap<>();
+    public static Map<String, SoundEvent> soundCategoryMap = new Object2ObjectOpenHashMap<>();
     private static long lastPlayed = System.currentTimeMillis();
 
-    public static void playSound(SoundEvent snd, float pitch, float volume)
+    public static void init()
+    {
+        initSoundCategoryMap();
+        initSoundItemMap();
+    }
+
+    public static void initSoundCategoryMap()
+    {
+        soundCategoryMap.clear();
+
+        soundCategoryMap.put("wood", SoundEvents.BLOCK_WOOD_HIT);
+        soundCategoryMap.put("dirt", SoundEvents.BLOCK_GRAVEL_HIT);
+        soundCategoryMap.put("gravel", SoundEvents.BLOCK_GRAVEL_HIT);
+        soundCategoryMap.put("sand", SoundEvents.BLOCK_SAND_HIT);
+        soundCategoryMap.put("grass", SoundEvents.BLOCK_GRASS_HIT);
+        soundCategoryMap.put("wool", SoundEvents.BLOCK_CLOTH_HIT);
+        soundCategoryMap.put("snow", SoundEvents.BLOCK_SNOW_HIT);
+        soundCategoryMap.put("ingot", SoundEvents.BLOCK_ANVIL_PLACE);
+        soundCategoryMap.put("nugget", SoundEvents.BLOCK_ANVIL_PLACE);
+        soundCategoryMap.put("gem", SoundEvents.BLOCK_NOTE_CHIME);
+        soundCategoryMap.put("dust", SoundEvents.BLOCK_SAND_BREAK);
+    }
+
+    public static void initSoundItemMap()
+    {
+        soundItemMap.clear();
+
+        try
+        {
+            // ITERATE OVER CONFIG ENTRIES
+            for (String entry : ESConfig.soundCategories.soundArray)
+            {
+                String[] splitsConfig = entry.split(";");
+                String sCategory = splitsConfig[0];
+                String sResLoc = splitsConfig[1];
+
+                String[] splitsRegistry = splitsConfig[1].split(":");
+                String sRegNamespace = splitsRegistry[0];
+                String sRegPath = splitsRegistry[1];
+
+                // ORE DICTIONARY
+                if (sRegNamespace.equals("ore"))
+                {
+                    // ITERATE OVER ORE DICTIONARY NAMES
+                    for (String oreName : OreDictionary.getOreNames())
+                    {
+                        if ((sRegPath.contains("*") && oreName.contains(sRegPath.replace("*", ""))) || oreName.equals(sRegPath))
+                        {
+                            //ITERATE OVER ORE DICTIONARY ENTRIES
+                            for (ItemStack oreStack : OreDictionary.getOres(oreName))
+                            {
+                                ExtraSounds.LOGGER.info("Adding item " + oreStack.getItem().getRegistryName() + " to category " + sCategory);
+                                soundItemMap.put(oreStack.getItem(), sCategory);
+                            }
+                        }
+                    }
+                }
+                // REGULAR ITEM
+                else
+                {
+                    ResourceLocation resLoc = new ResourceLocation(sResLoc);
+                    if (ForgeRegistries.ITEMS.containsKey(resLoc))
+                    {
+                        ExtraSounds.LOGGER.info("Adding item " + ForgeRegistries.ITEMS.getValue(resLoc).getRegistryName() + " to category " + sCategory);
+                        soundItemMap.put(ForgeRegistries.ITEMS.getValue(resLoc), sCategory);
+                    }
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public static void playSoundPlayer(SoundEvent soundEvent, float pitch, float volume)
     {
         long now = System.currentTimeMillis();
         if (now - lastPlayed > 5)
         {
-            Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getRecord(snd, pitch - 0.1F + randomOffset(), volume));
+            Minecraft.getMinecraft().world.playSound(Minecraft.getMinecraft().player, Minecraft.getMinecraft().player.getPosition(), soundEvent, SoundCategory.PLAYERS, volume, pitch - 0.1F + randomOffset());
             lastPlayed = now;
         }
     }
 
-    public static void playSound(SoundEvent snd)
+    public static void playSoundPlayer(SoundEvent soundEvent)
     {
         long now = System.currentTimeMillis();
         if (now - lastPlayed > 5)
         {
-            Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getRecord(snd, 0.9F + randomOffset(), 1.0F));
+            Minecraft.getMinecraft().world.playSound(Minecraft.getMinecraft().player, Minecraft.getMinecraft().player.getPosition(), soundEvent, SoundCategory.PLAYERS, 1.0F, 0.9F + randomOffset());
+            lastPlayed = now;
+        }
+    }
+
+    public static void playSoundWorld(SoundEvent soundEvent, BlockPos blockPos, float pitch, float volume)
+    {
+        long now = System.currentTimeMillis();
+        if (now - lastPlayed > 5)
+        {
+            Minecraft.getMinecraft().world.playSound(Minecraft.getMinecraft().player, blockPos, soundEvent, SoundCategory.BLOCKS, volume, pitch - 0.1F + randomOffset());
+            lastPlayed = now;
+        }
+    }
+
+    public static void playSoundWorld(SoundEvent soundEvent, BlockPos blockPos)
+    {
+        long now = System.currentTimeMillis();
+        if (now - lastPlayed > 5)
+        {
+            Minecraft.getMinecraft().world.playSound(Minecraft.getMinecraft().player, blockPos, soundEvent, SoundCategory.BLOCKS, 1.0F, 0.9F + randomOffset());
             lastPlayed = now;
         }
     }
 
     public static float randomOffset()
     {
-        return random.nextFloat() * 0.2F;
+        return Minecraft.getMinecraft().world.rand.nextFloat() * 0.2F;
     }
 
     public static void playClickSound(ItemStack stackIn)
     {
-        if (OreDictionary.getOreIDs(stackIn).length > 0)
-        {
-            for (int i : OreDictionary.getOreIDs(stackIn))
-            {
-                if (checkOreDictContains(i, "wood"))
-                {
-                    playSound(SoundEvents.BLOCK_WOOD_HIT, 2.0F, (float) ESConfig.soundVolume.esPickPlaceWoodSound);
-                }
+        Item item = stackIn.getItem();
 
-                else if (checkOreDict(i, "dirt") || checkOreDict(i, "gravel"))
-                {
-                    playSound(SoundEvents.BLOCK_GRAVEL_HIT, 2.0F, (float) ESConfig.soundVolume.esPickPlaceGravelSound);
-                }
-                else if (checkOreDict(i, "sand"))
-                {
-                    playSound(SoundEvents.BLOCK_SAND_HIT, 2.0F, (float) ESConfig.soundVolume.esPickPlaceSandSound);
-                }
-                else if (checkOreDict(i, "grass"))
-                {
-                    playSound(SoundEvents.BLOCK_GRASS_HIT, 2.0F, (float) ESConfig.soundVolume.esPickPlaceGrassSound);
-                }
-                else if (checkOreDict(i, "wool"))
-                {
-                    playSound(SoundEvents.BLOCK_CLOTH_HIT, 2.0F, (float) ESConfig.soundVolume.esPickPlaceWoolSound);
-                }
-                else if (checkOreDict(i, "snow"))
-                {
-                    playSound(SoundEvents.BLOCK_SNOW_HIT, 2.0F, (float) ESConfig.soundVolume.esPickPlaceSnowSound);
-                }
-
-                else if (checkOreDictPrefix(i, "ingot") || checkOreDictPrefix(i, "nugget"))
-                {
-                    playSound(SoundEvents.BLOCK_ANVIL_PLACE, 2.0F, (float) ESConfig.soundVolume.esPickPlaceMetalSound);
-                }
-                else if (checkOreDictPrefix(i, "gem"))
-                {
-                    playSound(SoundEvents.BLOCK_NOTE_CHIME, 2.0F, (float) ESConfig.soundVolume.esPickPlaceGemSound);
-                }
-                else if (checkOreDictPrefix(i, "dust"))
-                {
-                    playSound(SoundEvents.BLOCK_SAND_BREAK, 2.0F, (float) ESConfig.soundVolume.esPickPlaceDustSound);
-                }
-
-                else
-                {
-                    playSound(SoundEvents.BLOCK_STONE_HIT, 2.0F, (float) ESConfig.soundVolume.esPickPlaceDefaultSound);
-                }
-            }
-        }
-        else if (stackIn.getItem() instanceof ItemBlock)
+        if (item instanceof ItemBlock)
         {
-            ItemBlock itemBlock = (ItemBlock) stackIn.getItem();
-            playSound(itemBlock.getBlock().getSoundType().getHitSound(), 2.0F, (float) ESConfig.soundVolume.esPickPlaceDefaultSound);
+            playSoundPlayer(((ItemBlock) stackIn.getItem()).getBlock().getSoundType().getHitSound(), 2.0F, (float) ESConfig.soundVolume.esPickPlaceDefaultSound);
         }
-        else if (stackIn.getItem() instanceof ItemFood)
+        else if (item instanceof ItemFood)
         {
-            playSound(SoundEvents.BLOCK_SLIME_STEP, 2.0F, (float) ESConfig.soundVolume.esPickPlaceFoodSound);
+            playSoundPlayer(SoundEvents.BLOCK_SLIME_STEP, 2.0F, (float) ESConfig.soundVolume.esPickPlaceFoodSound);
         }
-        else if (stackIn.getItem() instanceof ItemArmor)
+        else if (item instanceof ItemArmor)
         {
-            if (((ItemArmor) stackIn.getItem()).getArmorMaterial().equals(ItemArmor.ArmorMaterial.LEATHER))
-            {
-                playSound(SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.0F, (float) ESConfig.soundVolume.esPickPlaceArmorSound);
-            }
-            else if (((ItemArmor) stackIn.getItem()).getArmorMaterial().equals(ItemArmor.ArmorMaterial.CHAIN))
-            {
-                playSound(SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 1.0F, (float) ESConfig.soundVolume.esPickPlaceArmorSound);
-            }
-            else if (((ItemArmor) stackIn.getItem()).getArmorMaterial().equals(ItemArmor.ArmorMaterial.GOLD))
-            {
-                playSound(SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 1.0F, (float) ESConfig.soundVolume.esPickPlaceArmorSound);
-            }
-            else if (((ItemArmor) stackIn.getItem()).getArmorMaterial().equals(ItemArmor.ArmorMaterial.IRON))
-            {
-                playSound(SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.0F, (float) ESConfig.soundVolume.esPickPlaceArmorSound);
-            }
-            else if (((ItemArmor) stackIn.getItem()).getArmorMaterial().equals(ItemArmor.ArmorMaterial.DIAMOND))
-            {
-                playSound(SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1.0F, (float) ESConfig.soundVolume.esPickPlaceArmorSound);
-            }
-            else
-            {
-                playSound(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0F, (float) ESConfig.soundVolume.esPickPlaceArmorSound);
-            }
+            playSoundPlayer(((ItemArmor) stackIn.getItem()).getArmorMaterial().getSoundEvent(), 1.0F, (float) ESConfig.soundVolume.esPickPlaceArmorSound);
+        }
+        else if (soundItemMap.containsKey(item))
+        {
+            playSoundPlayer(soundCategoryMap.get(soundItemMap.get(item)), 2.0F, (float) ESConfig.soundVolume.esPickPlaceDefaultSound);
         }
         else
         {
-            playSound(SoundEvents.BLOCK_STONE_HIT, 2.0F, (float) ESConfig.soundVolume.esPickPlaceDefaultSound);
+            playSoundPlayer(SoundEvents.BLOCK_STONE_HIT, 2.0F, (float) ESConfig.soundVolume.esPickPlaceDefaultSound);
         }
-    }
-
-    public static boolean checkOreDict(int index, String keyword)
-    {
-        return OreDictionary.getOreName(index).toLowerCase().equals(keyword);
-    }
-
-    public static boolean checkOreDictContains(int index, String keyword)
-    {
-        return OreDictionary.getOreName(index).toLowerCase().contains(keyword);
-    }
-
-    public static boolean checkOreDictPrefix(int index, String keyword)
-    {
-        return OreDictionary.getOreName(index).toLowerCase().startsWith(keyword);
     }
 }

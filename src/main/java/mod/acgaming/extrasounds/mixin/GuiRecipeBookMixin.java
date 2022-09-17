@@ -18,8 +18,8 @@ public class GuiRecipeBookMixin
     {
         if (ESConfig.soundToggles.esOpenCloseBookSound)
         {
-            if (open) ESSoundManager.playSound(ESSoundEvents.open_book);
-            else ESSoundManager.playSound(ESSoundEvents.close_book);
+            if (open) ESSoundManager.playSoundPlayer(ESSoundEvents.open_book);
+            else ESSoundManager.playSoundPlayer(ESSoundEvents.close_book);
         }
     }
 }

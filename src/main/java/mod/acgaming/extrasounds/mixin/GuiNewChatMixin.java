@@ -23,7 +23,7 @@ public class GuiNewChatMixin
 
         if (ESConfig.soundToggles.esMessageSound)
         {
-            ESSoundManager.playSound(ESSoundEvents.chat_message);
+            ESSoundManager.playSoundPlayer(ESSoundEvents.chat_message);
         }
 
         if (ESConfig.soundToggles.esMentionSound)
@@ -37,7 +37,7 @@ public class GuiNewChatMixin
                 // AVOID SELF-PINGS
                 if (!msg.startsWith("<" + player.getName() + ">") || !msg.startsWith("<" + player.getDisplayNameString() + ">"))
                 {
-                    ESSoundManager.playSound(ESSoundEvents.chat_mention);
+                    ESSoundManager.playSoundPlayer(ESSoundEvents.chat_mention);
                 }
             }
         }

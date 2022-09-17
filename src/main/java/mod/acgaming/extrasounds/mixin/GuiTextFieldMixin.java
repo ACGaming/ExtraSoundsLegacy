@@ -18,7 +18,7 @@ public class GuiTextFieldMixin
     {
         if (ESConfig.soundToggles.esTypingSound)
         {
-            if (cir.getReturnValue()) ESSoundManager.playSound(ESSoundEvents.typing);
+            if (cir.getReturnValue()) ESSoundManager.playSoundPlayer(ESSoundEvents.typing);
         }
     }
 }

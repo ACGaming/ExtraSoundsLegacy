@@ -16,12 +16,12 @@ public class MinecraftMixin
     @Inject(method = "processKeyBinds", at = @At(value = "FIELD", target = "Lnet/minecraft/entity/player/InventoryPlayer;currentItem:I"))
     public void esHotbarSlotSound(CallbackInfo info)
     {
-        if (ESConfig.soundToggles.esHotbarSound) ESSoundManager.playSound(ESSoundEvents.hotbar_slot);
+        if (ESConfig.soundToggles.esHotbarSound) ESSoundManager.playSoundPlayer(ESSoundEvents.hotbar_slot);
     }
 
     @Inject(method = "processKeyBinds", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/NetHandlerPlayClient;sendPacket(Lnet/minecraft/network/Packet;)V"))
     public void esSwapHandsSound(CallbackInfo info)
     {
-        if (ESConfig.soundToggles.esSwapHandsSound) ESSoundManager.playSound(ESSoundEvents.swap_hands);
+        if (ESConfig.soundToggles.esSwapHandsSound) ESSoundManager.playSoundPlayer(ESSoundEvents.swap_hands);
     }
 }

@@ -16,6 +16,6 @@ public class InventoryPlayerMixin
     @Inject(at = @At("RETURN"), method = "changeCurrentItem")
     public void esHotbarScrollSound(CallbackInfo info)
     {
-        if (ESConfig.soundToggles.esHotbarSound) ESSoundManager.playSound(ESSoundEvents.hotbar_slot);
+        if (ESConfig.soundToggles.esHotbarSound) ESSoundManager.playSoundPlayer(ESSoundEvents.hotbar_slot);
     }
 }

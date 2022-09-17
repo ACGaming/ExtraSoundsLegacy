@@ -7,6 +7,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import mod.acgaming.extrasounds.ExtraSounds;
+import mod.acgaming.extrasounds.sound.ESSoundManager;
 
 @Config(modid = ExtraSounds.MODID, name = "ExtraSounds")
 public class ESConfig
@@ -16,6 +17,9 @@ public class ESConfig
 
     @Config.Name("Volume")
     public static SoundVolume soundVolume = new SoundVolume();
+
+    @Config.Name("Pick/Place Categories")
+    public static SoundCategories soundCategories = new SoundCategories();
 
     public static class SoundToggles
     {
@@ -55,9 +59,9 @@ public class ESConfig
         @Config.Comment("Play a sound when selecting a creative tab")
         public boolean esCreativeTabSound = true;
 
-        @Config.Name("Scroll JEI Page Sound")
-        @Config.Comment("Play a sound when scrolling JEI pages")
-        public boolean esScrollJEIPageSound = true;
+        @Config.Name("Scroll Sound")
+        @Config.Comment("Play a sound when scrolling creative rows or JEI pages")
+        public boolean esScrollSound = true;
 
         @Config.Name("Swap Hands Sound")
         @Config.Comment("Play a sound when swapping hands to hold an item")
@@ -90,6 +94,30 @@ public class ESConfig
         @Config.Name("Spawn Egg Sound")
         @Config.Comment("Play a sound when spawning an entity with a spawn egg")
         public boolean esUseSpawnEggSound = true;
+
+        @Config.Name("Bonemeal Sound")
+        @Config.Comment("Play a sound when applying bonemeal")
+        public boolean esBonemealSound = true;
+
+        @Config.Name("Spawner Sound")
+        @Config.Comment("Play a sound when mob spawners spawn an entity")
+        public boolean esSpawnerSound = true;
+
+        @Config.Name("Plant Crops Sound")
+        @Config.Comment("Play a sound when planting a crop")
+        public boolean esCropSound = true;
+
+        @Config.Name("Nether Portal Sound")
+        @Config.Comment("Play a sound when a nether portal is constructed")
+        public boolean esNetherPortalSound = true;
+
+        @Config.Name("Crafting Sound")
+        @Config.Comment("Play a sound when taking the craft result")
+        public boolean esCraftingSound = true;
+
+        @Config.Name("Beacon Sound")
+        @Config.Comment("Play a sound when activating, deactivating and running a beacon")
+        public boolean esBeaconSound = true;
     }
 
     public static class SoundVolume
@@ -143,6 +171,25 @@ public class ESConfig
         public double esPickPlaceFoodSound = 0.2;
     }
 
+    public static class SoundCategories
+    {
+        @Config.Name("Pick/Place Sounds")
+        @Config.Comment({
+            "Categories of sounds when picking and placing items in GUIs",
+            "Available categories: wood, dirt, gravel, sand, grass, wool, snow, ingot, nugget, gem, dust",
+            "Syntax: CATEGORY;REGISTRY_NAME",
+            "Use * for wildcards"
+        })
+        public String[] soundArray = new String[]
+            {
+                "wood;ore:stickWood",
+                "ingot;ore:ingot*",
+                "nugget;ore:nugget*",
+                "gem;ore:gem*",
+                "dust;ore:dust*"
+            };
+    }
+
     @Mod.EventBusSubscriber(modid = ExtraSounds.MODID)
     public static class EventHandler
     {
@@ -152,6 +199,8 @@ public class ESConfig
             if (event.getModID().equals(ExtraSounds.MODID))
             {
                 ConfigManager.sync(ExtraSounds.MODID, Config.Type.INSTANCE);
+                ESSoundManager.initSoundItemMap();
+                ExtraSounds.LOGGER.info(ExtraSounds.NAME + " config reloaded!");
             }
         }
     }

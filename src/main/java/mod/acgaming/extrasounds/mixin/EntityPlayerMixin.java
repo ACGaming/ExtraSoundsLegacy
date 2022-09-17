@@ -1,8 +1,10 @@
 package mod.acgaming.extrasounds.mixin;
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 import mod.acgaming.extrasounds.config.ESConfig;
 import mod.acgaming.extrasounds.sound.ESSoundEvents;
@@ -13,8 +15,13 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(EntityPlayer.class)
-public class EntityPlayerMixin
+public abstract class EntityPlayerMixin extends EntityLivingBase
 {
+    public EntityPlayerMixin(World worldIn)
+    {
+        super(worldIn);
+    }
+
     @Inject(at = @At("TAIL"), method = "dropItem(Lnet/minecraft/item/ItemStack;ZZ)Lnet/minecraft/entity/item/EntityItem;")
     public void esDropItemSound(ItemStack droppedItem, boolean dropAround, boolean traceItem, CallbackInfoReturnable<EntityItem> cir)
     {
@@ -24,7 +31,7 @@ public class EntityPlayerMixin
             {
                 float range = 0.1F;
                 float pitch = 1.0F + range * (1.0F * droppedItem.getItem().getItemStackLimit() / droppedItem.getCount()) - range / 2;
-                ESSoundManager.playSound(ESSoundEvents.drop_item, pitch, 1.0F);
+                ESSoundManager.playSoundPlayer(ESSoundEvents.drop_item, pitch, 1.0F);
             }
         }
     }

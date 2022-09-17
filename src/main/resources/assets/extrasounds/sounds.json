@@ -173,5 +173,51 @@
       "extrasounds:spawn_egg/use4",
       "extrasounds:spawn_egg/use5"
     ]
+  },
+  "plant_crop": {
+    "sounds": [
+      "extrasounds:plant/crop1",
+      "extrasounds:plant/crop2",
+      "extrasounds:plant/crop3",
+      "extrasounds:plant/crop4",
+      "extrasounds:plant/crop5",
+      "extrasounds:plant/crop6"
+    ]
+  },
+  "plant_netherwart": {
+    "sounds": [
+      "extrasounds:plant/netherwart1",
+      "extrasounds:plant/netherwart2",
+      "extrasounds:plant/netherwart3",
+      "extrasounds:plant/netherwart4",
+      "extrasounds:plant/netherwart5",
+      "extrasounds:plant/netherwart6"
+    ]
+  },
+  "beacon_ambient": {
+    "sounds": [
+      {
+        "attenuation_distance": 7,
+        "name": "extrasounds:block/beacon/ambient",
+        "volume": 0.9
+      }
+    ]
+  },
+  "beacon_activate": {
+    "sounds": [
+      "extrasounds:block/beacon/activate"
+    ]
+  },
+  "beacon_deactivate": {
+    "sounds": [
+      "extrasounds:block/beacon/deactivate"
+    ]
+  },
+  "beacon_power": {
+    "sounds": [
+      "extrasounds:block/beacon/power1",
+      "extrasounds:block/beacon/power2",
+      "extrasounds:block/beacon/power3"
+    ]
   }
 }

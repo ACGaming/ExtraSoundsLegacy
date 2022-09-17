@@ -22,6 +22,6 @@ public class BlockFlowerPotMixin
     @Inject(method = "onBlockActivated", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/EntityPlayer;addStat(Lnet/minecraft/stats/StatBase;)V"))
     public void esFlowerPotPlant(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ, CallbackInfoReturnable<Boolean> cir)
     {
-        if (ESConfig.soundToggles.esFlowerPotPlantSound) ESSoundManager.playSound(ESSoundEvents.plant_flower_pot, 1.0F, 0.8F);
+        if (worldIn.isRemote && ESConfig.soundToggles.esFlowerPotPlantSound) ESSoundManager.playSoundWorld(ESSoundEvents.plant_flower_pot, pos, 1.0F, 0.8F);
     }
 }

@@ -19,13 +19,13 @@ public class GuiContainerMixin
     @Inject(at = @At("HEAD"), method = "initGui")
     public void esOpenGUISound(CallbackInfo ci)
     {
-        if (ESConfig.soundToggles.esOpenCloseGUISound) ESSoundManager.playSound(ESSoundEvents.open_gui);
+        if (ESConfig.soundToggles.esOpenCloseGUISound) ESSoundManager.playSoundPlayer(ESSoundEvents.open_gui);
     }
 
     @Inject(at = @At("HEAD"), method = "onGuiClosed")
     public void esCloseGUISound(CallbackInfo ci)
     {
-        if (ESConfig.soundToggles.esOpenCloseGUISound) ESSoundManager.playSound(ESSoundEvents.close_gui);
+        if (ESConfig.soundToggles.esOpenCloseGUISound) ESSoundManager.playSoundPlayer(ESSoundEvents.close_gui);
     }
 
     @Inject(at = @At("HEAD"), method = "handleMouseClick")

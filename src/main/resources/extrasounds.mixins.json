@@ -3,6 +3,6 @@
   "refmap": "extrasounds.refmap.json",
   "minVersion": "0.8",
   "compatibilityLevel": "JAVA_8",
-  "mixins": ["BlockFlowerPotMixin", "BlockJukeboxMixin", "EntityEnderPearlMixin", "EntityPlayerMixin", "InventoryPlayerMixin", "ItemBoatMixin", "ItemBowMixin", "ItemMinecartMixin", "ItemMonsterPlacerMixin"],
+  "mixins": ["BlockFlowerPotMixin", "BlockJukeboxMixin", "BlockPortalMixin", "EntityEnderPearlMixin", "EntityPlayerMixin", "InventoryPlayerMixin", "ItemBoatMixin", "ItemBowMixin", "ItemDyeMixin", "ItemMinecartMixin", "ItemMonsterPlacerMixin", "ItemSeedsMixin", "MobSpawnerBaseLogicMixin", "SlotCraftingMixin", "TileEntityBeaconMixin"],
   "client": ["GuiContainerCreativeMixin", "GuiContainerMixin", "GuiInventoryMixin", "GuiNewChatMixin", "GuiRecipeBookMixin", "GuiScreenBookMixin", "GuiTextFieldMixin", "MinecraftMixin"]
 }

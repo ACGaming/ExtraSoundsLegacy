@@ -21,6 +21,6 @@ public class ItemBoatMixin
     @Inject(method = "onItemRightClick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;spawnEntity(Lnet/minecraft/entity/Entity;)Z"))
     public void esPlaceBoatSound(World worldIn, EntityPlayer playerIn, EnumHand handIn, CallbackInfoReturnable<ActionResult<ItemStack>> cir)
     {
-        if (ESConfig.soundToggles.esPlaceBoatSound) ESSoundManager.playSound(ESSoundEvents.place_boat);
+        if (ESConfig.soundToggles.esPlaceBoatSound) ESSoundManager.playSoundPlayer(ESSoundEvents.place_boat);
     }
 }

@@ -16,12 +16,12 @@ public class GuiScreenBookMixin
     @Inject(at = @At("HEAD"), method = "initGui")
     public void esOpenGUISound(CallbackInfo ci)
     {
-        if (ESConfig.soundToggles.esOpenCloseGUISound) ESSoundManager.playSound(ESSoundEvents.open_book);
+        if (ESConfig.soundToggles.esOpenCloseGUISound) ESSoundManager.playSoundPlayer(ESSoundEvents.open_book);
     }
 
     @Inject(at = @At("HEAD"), method = "onGuiClosed")
     public void esCloseGUISound(CallbackInfo ci)
     {
-        if (ESConfig.soundToggles.esOpenCloseGUISound) ESSoundManager.playSound(ESSoundEvents.close_book);
+        if (ESConfig.soundToggles.esOpenCloseGUISound) ESSoundManager.playSoundPlayer(ESSoundEvents.close_book);
     }
 }

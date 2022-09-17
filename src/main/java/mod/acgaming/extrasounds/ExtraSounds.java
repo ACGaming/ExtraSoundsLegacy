@@ -8,15 +8,16 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import mod.acgaming.extrasounds.sound.ESOreDictionary;
 import mod.acgaming.extrasounds.sound.ESSoundEvents;
+import mod.acgaming.extrasounds.sound.ESSoundManager;
 
 @Mod(modid = ExtraSounds.MODID, name = ExtraSounds.NAME, version = ExtraSounds.VERSION, acceptedMinecraftVersions = "[1.12.2]", dependencies = ExtraSounds.DEPENDENCIES, clientSideOnly = true)
 public class ExtraSounds
 {
     public static final String MODID = "extrasounds";
     public static final String NAME = "Extra Sounds";
-    public static final String VERSION = "1.12.2-1.2.0";
-    public static final String DEPENDENCIES = "required-after:mixinbooter;after:jei";
-    public static final Logger LOGGER = LogManager.getLogger("ES");
+    public static final String VERSION = "1.12.2-1.3.0";
+    public static final String DEPENDENCIES = "required-after:mixinbooter;required-after:assetmover;after:jei";
+    public static final Logger LOGGER = LogManager.getLogger(NAME);
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
@@ -28,6 +29,7 @@ public class ExtraSounds
     public void init(FMLInitializationEvent event)
     {
         ESOreDictionary.init();
+        ESSoundManager.init();
         LOGGER.info("Extra Sounds initialized");
     }
 }

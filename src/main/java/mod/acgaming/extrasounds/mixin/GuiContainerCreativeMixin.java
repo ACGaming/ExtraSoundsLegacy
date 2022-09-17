@@ -38,7 +38,16 @@ public class GuiContainerCreativeMixin
     {
         if (ESConfig.soundToggles.esCreativeTabSound)
         {
-            ESSoundManager.playSound(ESSoundEvents.creative_tab);
+            ESSoundManager.playSoundPlayer(ESSoundEvents.creative_tab);
+        }
+    }
+
+    @Inject(method = "handleMouseInput", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/inventory/GuiContainerCreative$ContainerCreative;scrollTo(F)V"))
+    public void esScrollSound(CallbackInfo ci)
+    {
+        if (ESConfig.soundToggles.esScrollSound)
+        {
+            ESSoundManager.playSoundPlayer(ESSoundEvents.scroll_page);
         }
     }
 }

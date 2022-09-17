@@ -26,11 +26,11 @@ public class IngredientGridWithNavigationMixin
     @Inject(at = @At("HEAD"), method = "handleMouseScrolled", remap = false)
     public void esScrollJEIPage(int mouseX, int mouseY, int scrollDelta, CallbackInfoReturnable<Boolean> cir)
     {
-        if (ESConfig.soundToggles.esScrollJEIPageSound)
+        if (ESConfig.soundToggles.esScrollSound)
         {
             if (this.pageDelegate.getPageCount() > 1 && scrollDelta != 0)
             {
-                ESSoundManager.playSound(ESSoundEvents.scroll_page);
+                ESSoundManager.playSoundPlayer(ESSoundEvents.scroll_page);
             }
         }
     }
