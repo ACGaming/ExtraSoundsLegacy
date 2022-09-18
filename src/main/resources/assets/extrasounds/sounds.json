@@ -1,197 +1,7 @@
 {
-  "drop_item": {
+  "beacon_activate": {
     "sounds": [
-      {
-        "name": "liquid/lavapop",
-        "pitch": 1.0,
-        "volume": 0.4
-      }
-    ]
-  },
-  "open_gui": {
-    "sounds": [
-      {
-        "name": "ui/toast/in",
-        "pitch": 2.0,
-        "volume": 1.0
-      }
-    ]
-  },
-  "close_gui": {
-    "sounds": [
-      {
-        "name": "ui/toast/out",
-        "pitch": 2.0,
-        "volume": 1.0
-      }
-    ]
-  },
-  "chat_message": {
-    "sounds": [
-      {
-        "name": "note/hat",
-        "pitch": 2.0,
-        "volume": 0.5
-      }
-    ]
-  },
-  "chat_mention": {
-    "sounds": [
-      {
-        "name": "note/icechime",
-        "pitch": 1.8,
-        "volume": 0.7
-      }
-    ]
-  },
-  "typing": {
-    "sounds": [
-      {
-        "name": "note/hat",
-        "pitch": 2.0,
-        "volume": 0.2
-      }
-    ]
-  },
-  "hotbar_slot": {
-    "sounds": [
-      {
-        "name": "note/hat",
-        "pitch": 1.8,
-        "volume": 0.15
-      }
-    ]
-  },
-  "open_book": {
-    "sounds": [
-      {
-        "name": "extrasounds:book/open",
-        "pitch": 1.0,
-        "volume": 1.0
-      }
-    ]
-  },
-  "close_book": {
-    "sounds": [
-      {
-        "name": "extrasounds:book/close",
-        "pitch": 1.0,
-        "volume": 1.0
-      }
-    ]
-  },
-  "creative_tab": {
-    "sounds": [
-      {
-        "name": "random/click",
-        "pitch": 1.0,
-        "volume": 0.4
-      }
-    ]
-  },
-  "scroll_page": {
-    "sounds": [
-      {
-        "name": "mob/chicken/plop",
-        "pitch": 0.4,
-        "volume": 0.2
-      }
-    ]
-  },
-  "swap_hands": {
-    "sounds": [
-      {
-        "name": "mob/irongolem/throw",
-        "pitch": 1.0,
-        "volume": 0.8
-      }
-    ]
-  },
-  "pull_bow": {
-    "sounds": [
-      {
-        "name": "extrasounds:bow/pull",
-        "pitch": 1.2,
-        "volume": 0.4
-      }
-    ]
-  },
-  "place_boat": {
-    "sounds": [
-      "dig/wood1",
-      "dig/wood2",
-      "dig/wood3",
-      "dig/wood4"
-    ]
-  },
-  "place_minecart": {
-    "sounds": [
-      {
-        "name": "random/anvil_land",
-        "pitch": 1.0,
-        "volume": 0.4
-      }
-    ]
-  },
-  "plant_flower_pot": {
-    "sounds": [
-      "dig/grass1",
-      "dig/grass2",
-      "dig/grass3",
-      "dig/grass4"
-    ]
-  },
-  "teleport_ender_pearl": {
-    "sounds": [
-      "mob/endermen/portal",
-      "mob/endermen/portal2"
-    ]
-  },
-  "jukebox_insert": {
-    "sounds": [
-      {
-        "name": "random/click",
-        "pitch": 1.0,
-        "volume": 1.0
-      }
-    ]
-  },
-  "jukebox_eject": {
-    "sounds": [
-      {
-        "name": "random/bow",
-        "pitch": 1.0,
-        "volume": 1.0
-      }
-    ]
-  },
-  "use_spawn_egg": {
-    "sounds": [
-      "extrasounds:spawn_egg/use1",
-      "extrasounds:spawn_egg/use2",
-      "extrasounds:spawn_egg/use3",
-      "extrasounds:spawn_egg/use4",
-      "extrasounds:spawn_egg/use5"
-    ]
-  },
-  "plant_crop": {
-    "sounds": [
-      "extrasounds:plant/crop1",
-      "extrasounds:plant/crop2",
-      "extrasounds:plant/crop3",
-      "extrasounds:plant/crop4",
-      "extrasounds:plant/crop5",
-      "extrasounds:plant/crop6"
-    ]
-  },
-  "plant_netherwart": {
-    "sounds": [
-      "extrasounds:plant/netherwart1",
-      "extrasounds:plant/netherwart2",
-      "extrasounds:plant/netherwart3",
-      "extrasounds:plant/netherwart4",
-      "extrasounds:plant/netherwart5",
-      "extrasounds:plant/netherwart6"
+      "extrasounds:block/beacon/activate"
     ]
   },
   "beacon_ambient": {
@@ -201,11 +11,6 @@
         "name": "extrasounds:block/beacon/ambient",
         "volume": 0.9
       }
-    ]
-  },
-  "beacon_activate": {
-    "sounds": [
-      "extrasounds:block/beacon/activate"
     ]
   },
   "beacon_deactivate": {
@@ -220,13 +25,77 @@
       "extrasounds:block/beacon/power3"
     ]
   },
-  "effect_add_positive": {
+  "bonemeal": {
     "sounds": [
       {
-        "name": "minecraft:block.chorus_flower.grow",
-        "volume": 1,
+        "name": "minecraft:entity.arrow.hit_player",
+        "volume": 0.4,
         "pitch": 2,
         "type": "event"
+      }
+    ]
+  },
+  "chat_mention": {
+    "sounds": [
+      {
+        "name": "note/icechime",
+        "volume": 0.7,
+        "pitch": 1.8
+      }
+    ]
+  },
+  "chat_message": {
+    "sounds": [
+      {
+        "name": "note/hat",
+        "volume": 0.5,
+        "pitch": 2
+      }
+    ]
+  },
+  "close_book": {
+    "sounds": [
+      {
+        "name": "extrasounds:book/close",
+        "volume": 1,
+        "pitch": 1
+      }
+    ]
+  },
+  "close_gui": {
+    "sounds": [
+      {
+        "name": "ui/toast/out",
+        "volume": 1,
+        "pitch": 2
+      }
+    ]
+  },
+  "crafting": {
+    "sounds": [
+      {
+        "name": "block.anvil.use",
+        "volume": 0.5,
+        "pitch": 1.2,
+        "type": "event"
+      }
+    ]
+  },
+  "creative_tab": {
+    "sounds": [
+      {
+        "name": "random/click",
+        "volume": 0.4,
+        "pitch": 1
+      }
+    ]
+  },
+  "drop_item": {
+    "sounds": [
+      {
+        "name": "liquid/lavapop",
+        "volume": 0.4,
+        "pitch": 1
       }
     ]
   },
@@ -288,12 +157,12 @@
       }
     ]
   },
-  "effect_remove_positive": {
+  "effect_add_positive": {
     "sounds": [
       {
         "name": "minecraft:block.chorus_flower.grow",
         "volume": 1,
-        "pitch": 1,
+        "pitch": 2,
         "type": "event"
       }
     ]
@@ -378,6 +247,380 @@
         "volume": 1,
         "pitch": 0.8
       }
+    ]
+  },
+  "effect_remove_positive": {
+    "sounds": [
+      {
+        "name": "minecraft:block.chorus_flower.grow",
+        "volume": 1,
+        "pitch": 1,
+        "type": "event"
+      }
+    ]
+  },
+  "hotbar_slot": {
+    "sounds": [
+      {
+        "name": "note/hat",
+        "volume": 0.15,
+        "pitch": 1.8
+      }
+    ]
+  },
+  "jukebox_eject": {
+    "sounds": [
+      {
+        "name": "random/bow",
+        "volume": 1,
+        "pitch": 1
+      }
+    ]
+  },
+  "jukebox_insert": {
+    "sounds": [
+      {
+        "name": "random/click",
+        "volume": 1,
+        "pitch": 1
+      }
+    ]
+  },
+  "mob_spawner": {
+    "sounds": [
+      {
+        "name": "item.firecharge.use",
+        "volume": 0.4,
+        "pitch": 0.5,
+        "type": "event"
+      }
+    ]
+  },
+  "nether_portal_spawn": {
+    "sounds": [
+      {
+        "name": "minecraft:block.end_portal.spawn",
+        "type": "event"
+      }
+    ]
+  },
+  "open_book": {
+    "sounds": [
+      {
+        "name": "extrasounds:book/open",
+        "volume": 1,
+        "pitch": 1
+      }
+    ]
+  },
+  "open_gui": {
+    "sounds": [
+      {
+        "name": "ui/toast/in",
+        "volume": 1,
+        "pitch": 2
+      }
+    ]
+  },
+  "pick_place_dirt": {
+    "sounds": [
+      {
+        "name": "block.gravel.hit",
+        "volume": 0.2,
+        "pitch": 2,
+        "type": "event"
+      }
+    ]
+  },
+  "pick_place_dust": {
+    "sounds": [
+      {
+        "name": "block.sand.break",
+        "volume": 0.6,
+        "pitch": 2,
+        "type": "event"
+      }
+    ]
+  },
+  "pick_place_food": {
+    "sounds": [
+      {
+        "name": "block.slime.step",
+        "volume": 0.2,
+        "pitch": 2,
+        "type": "event"
+      }
+    ]
+  },
+  "pick_place_gem": {
+    "sounds": [
+      {
+        "name": "block.note.chime",
+        "volume": 0.2,
+        "pitch": 2,
+        "type": "event"
+      }
+    ]
+  },
+  "pick_place_generic": {
+    "sounds": [
+      {
+        "name": "block.stone.hit",
+        "volume": 0.4,
+        "pitch": 2,
+        "type": "event"
+      }
+    ]
+  },
+  "pick_place_grass": {
+    "sounds": [
+      {
+        "name": "block.grass.hit",
+        "volume": 0.6,
+        "pitch": 2,
+        "type": "event"
+      }
+    ]
+  },
+  "pick_place_gravel": {
+    "sounds": [
+      {
+        "name": "block.gravel.hit",
+        "volume": 0.2,
+        "pitch": 2,
+        "type": "event"
+      }
+    ]
+  },
+  "pick_place_ingot": {
+    "sounds": [
+      {
+        "name": "block.anvil.place",
+        "volume": 0.1,
+        "pitch": 2,
+        "type": "event"
+      }
+    ]
+  },
+  "pick_place_nugget": {
+    "sounds": [
+      {
+        "name": "block.anvil.place",
+        "volume": 0.1,
+        "pitch": 2,
+        "type": "event"
+      }
+    ]
+  },
+  "pick_place_sand": {
+    "sounds": [
+      {
+        "name": "block.sand.hit",
+        "volume": 0.4,
+        "pitch": 2,
+        "type": "event"
+      }
+    ]
+  },
+  "pick_place_snow": {
+    "sounds": [
+      {
+        "name": "block.snow.hit",
+        "volume": 0.6,
+        "pitch": 2,
+        "type": "event"
+      }
+    ]
+  },
+  "pick_place_wood": {
+    "sounds": [
+      {
+        "name": "block.wood.hit",
+        "volume": 0.2,
+        "pitch": 2,
+        "type": "event"
+      }
+    ]
+  },
+  "pick_place_wool": {
+    "sounds": [
+      {
+        "name": "block.wool.hit",
+        "volume": 0.4,
+        "pitch": 2,
+        "type": "event"
+      }
+    ]
+  },
+  "place_boat": {
+    "sounds": [
+      {
+        "name": "minecraft:block.wood.place",
+        "type": "event"
+      }
+    ]
+  },
+  "place_minecart": {
+    "sounds": [
+      {
+        "name": "random/anvil_land",
+        "volume": 0.4,
+        "pitch": 1
+      }
+    ]
+  },
+  "plant_crop": {
+    "sounds": [
+      {
+        "name": "extrasounds:plant/crop1",
+        "volume": 0.45,
+        "pitch": 1
+      },
+      {
+        "name": "extrasounds:plant/crop2",
+        "volume": 0.45,
+        "pitch": 1
+      },
+      {
+        "name": "extrasounds:plant/crop3",
+        "volume": 0.45,
+        "pitch": 1
+      },
+      {
+        "name": "extrasounds:plant/crop4",
+        "volume": 0.45,
+        "pitch": 1
+      },
+      {
+        "name": "extrasounds:plant/crop5",
+        "volume": 0.45,
+        "pitch": 1
+      },
+      {
+        "name": "extrasounds:plant/crop6",
+        "volume": 0.45,
+        "pitch": 1
+      }
+    ]
+  },
+  "plant_flower_pot": {
+    "sounds": [
+      {
+        "name": "minecraft:block.grass.place",
+        "volume": 0.8,
+        "pitch": 1,
+        "type": "event"
+      }
+    ]
+  },
+  "plant_netherwart": {
+    "sounds": [
+      {
+        "name": "extrasounds:plant/netherwart1",
+        "volume": 0.9,
+        "pitch": 1
+      },
+      {
+        "name": "extrasounds:plant/netherwart2",
+        "volume": 0.9,
+        "pitch": 1
+      },
+      {
+        "name": "extrasounds:plant/netherwart3",
+        "volume": 0.9,
+        "pitch": 1
+      },
+      {
+        "name": "extrasounds:plant/netherwart4",
+        "volume": 0.9,
+        "pitch": 1
+      },
+      {
+        "name": "extrasounds:plant/netherwart5",
+        "volume": 0.9,
+        "pitch": 1
+      },
+      {
+        "name": "extrasounds:plant/netherwart6",
+        "volume": 0.9,
+        "pitch": 1
+      }
+    ]
+  },
+  "pull_bow": {
+    "sounds": [
+      {
+        "name": "extrasounds:bow/pull",
+        "volume": 0.4,
+        "pitch": 1.2
+      }
+    ]
+  },
+  "scroll_page": {
+    "sounds": [
+      {
+        "name": "mob/chicken/plop",
+        "volume": 0.2,
+        "pitch": 0.4
+      }
+    ]
+  },
+  "swap_hands": {
+    "sounds": [
+      {
+        "name": "mob/irongolem/throw",
+        "volume": 0.8,
+        "pitch": 1
+      }
+    ]
+  },
+  "teleport_ender_pearl": {
+    "sounds": [
+      "mob/endermen/portal",
+      "mob/endermen/portal2"
+    ]
+  },
+  "typing": {
+    "sounds": [
+      {
+        "name": "extrasounds:block/bamboo/step1",
+        "volume": 0.4,
+        "pitch": 2
+      },
+      {
+        "name": "extrasounds:block/bamboo/step2",
+        "volume": 0.4,
+        "pitch": 2
+      },
+      {
+        "name": "extrasounds:block/bamboo/step3",
+        "volume": 0.4,
+        "pitch": 2
+      },
+      {
+        "name": "extrasounds:block/bamboo/step4",
+        "volume": 0.4,
+        "pitch": 2
+      },
+      {
+        "name": "extrasounds:block/bamboo/step5",
+        "volume": 0.4,
+        "pitch": 2
+      },
+      {
+        "name": "extrasounds:block/bamboo/step6",
+        "volume": 0.4,
+        "pitch": 2
+      }
+    ]
+  },
+  "use_spawn_egg": {
+    "sounds": [
+      "extrasounds:spawn_egg/use1",
+      "extrasounds:spawn_egg/use2",
+      "extrasounds:spawn_egg/use3",
+      "extrasounds:spawn_egg/use4",
+      "extrasounds:spawn_egg/use5"
     ]
   }
 }

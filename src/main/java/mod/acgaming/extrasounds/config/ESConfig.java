@@ -15,9 +15,6 @@ public class ESConfig
     @Config.Name("Toggles")
     public static SoundToggles soundToggles = new SoundToggles();
 
-    @Config.Name("Volume")
-    public static SoundVolume soundVolume = new SoundVolume();
-
     @Config.Name("Pick/Place Categories")
     public static SoundCategories soundCategories = new SoundCategories();
 
@@ -124,65 +121,16 @@ public class ESConfig
         public boolean esPotionSound = true;
     }
 
-    public static class SoundVolume
-    {
-        @Config.Name("Default Item Pick/Place Sound Volume")
-        @Config.Comment("Volume of the fallback sound when picking and placing items in GUIs")
-        public double esPickPlaceDefaultSound = 0.4;
-
-        @Config.Name("Wood Item Pick/Place Sound Volume")
-        @Config.Comment("Volume of the sound when picking and placing wooden items in GUIs")
-        public double esPickPlaceWoodSound = 0.2;
-
-        @Config.Name("Gravel Item Pick/Place Sound Volume")
-        @Config.Comment("Volume of the sound when picking and placing gravel items in GUIs")
-        public double esPickPlaceGravelSound = 0.2;
-
-        @Config.Name("Sand Item Pick/Place Sound Volume")
-        @Config.Comment("Volume of the sound when picking and placing sand items in GUIs")
-        public double esPickPlaceSandSound = 0.4;
-
-        @Config.Name("Grass Item Pick/Place Sound Volume")
-        @Config.Comment("Volume of the sound when picking and placing grass items in GUIs")
-        public double esPickPlaceGrassSound = 0.6;
-
-        @Config.Name("Wool Item Pick/Place Sound Volume")
-        @Config.Comment("Volume of the sound when picking and placing wool items in GUIs")
-        public double esPickPlaceWoolSound = 0.4;
-
-        @Config.Name("Metal Item Pick/Place Sound Volume")
-        @Config.Comment("Volume of the sound when picking and placing metal items in GUIs")
-        public double esPickPlaceMetalSound = 0.1;
-
-        @Config.Name("Gem Item Pick/Place Sound Volume")
-        @Config.Comment("Volume of the sound when picking and placing gem items in GUIs")
-        public double esPickPlaceGemSound = 0.2;
-
-        @Config.Name("Dust Item Pick/Place Sound Volume")
-        @Config.Comment("Volume of the sound when picking and placing dust items in GUIs")
-        public double esPickPlaceDustSound = 0.6;
-
-        @Config.Name("Snow Item Pick/Place Sound Volume")
-        @Config.Comment("Volume of the sound when picking and placing snow items in GUIs")
-        public double esPickPlaceSnowSound = 0.6;
-
-        @Config.Name("Armor Item Pick/Place Sound Volume")
-        @Config.Comment("Volume of the sound when picking and placing armor items in GUIs")
-        public double esPickPlaceArmorSound = 0.8;
-
-        @Config.Name("Food Item Pick/Place Sound Volume")
-        @Config.Comment("Volume of the sound when picking and placing food items in GUIs")
-        public double esPickPlaceFoodSound = 0.2;
-    }
-
     public static class SoundCategories
     {
         @Config.Name("Pick/Place Sounds")
         @Config.Comment({
             "Categories of sounds when picking and placing items in GUIs",
+            "This won't affect blocks, food and armor as these are evaluated automatically",
             "Available categories: wood, dirt, gravel, sand, grass, wool, snow, ingot, nugget, gem, dust",
             "Syntax: CATEGORY;REGISTRY_NAME",
-            "Use * for wildcards"
+            "Use * for ore dictionary wildcards",
+            "Examples | ingot;ore:example_ore | gem;mod_id:example_item"
         })
         public String[] soundArray = new String[]
             {

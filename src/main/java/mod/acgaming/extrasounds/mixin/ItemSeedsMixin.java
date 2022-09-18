@@ -29,11 +29,11 @@ public class ItemSeedsMixin
         {
             if (worldIn.getBlockState(pos).getBlock() instanceof BlockFarmland)
             {
-                ESSoundManager.playSoundWorld(ESSoundEvents.plant_crop, pos, 1.0F, 0.45F);
+                ESSoundManager.playSoundWorld(ESSoundEvents.plant_crop, pos);
             }
             else if (worldIn.getBlockState(pos).getBlock() instanceof BlockSoulSand)
             {
-                ESSoundManager.playSoundWorld(ESSoundEvents.plant_netherwart, pos, 1.0F, 0.9F);
+                ESSoundManager.playSoundWorld(ESSoundEvents.plant_netherwart, pos);
             }
         }
     }

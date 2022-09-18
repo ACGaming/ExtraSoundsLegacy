@@ -7,8 +7,6 @@
     "mcversion": "${mcversion}",
     "url": "https://github.com/ACGaming/ExtraSoundsLegacy",
     "authorList": ["ACGaming"],
-    "credits": "stashymane, Sydokiddo, book sounds by j1987",
-    "useDependencyInformation": true,
-    "dependencies": ["mixinbooter"]
+    "credits": "stashymane, Sydokiddo, book sounds by j1987"
   }
 ]

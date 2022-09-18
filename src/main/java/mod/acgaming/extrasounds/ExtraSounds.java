@@ -27,6 +27,7 @@ public class ExtraSounds
     public void preInit(FMLPreInitializationEvent event)
     {
         ESSoundEvents.preInit();
+        ESSoundManager.preInit();
         LOGGER.info("Extra Sounds pre-initialized");
     }
 

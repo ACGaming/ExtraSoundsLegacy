@@ -1,10 +1,10 @@
 package mod.acgaming.extrasounds.mixin;
 
-import net.minecraft.init.SoundEvents;
 import net.minecraft.tileentity.MobSpawnerBaseLogic;
 import net.minecraft.util.math.BlockPos;
 
 import mod.acgaming.extrasounds.config.ESConfig;
+import mod.acgaming.extrasounds.sound.ESSoundEvents;
 import mod.acgaming.extrasounds.sound.ESSoundManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -21,6 +21,6 @@ public abstract class MobSpawnerBaseLogicMixin
     @Inject(method = "updateSpawner", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/chunk/storage/AnvilChunkLoader;spawnEntity(Lnet/minecraft/entity/Entity;Lnet/minecraft/world/World;)V"))
     public void esSpawnerSound(CallbackInfo ci)
     {
-        if (ESConfig.soundToggles.esSpawnerSound) ESSoundManager.playSoundWorld(SoundEvents.ITEM_FIRECHARGE_USE, this.getSpawnerPosition(), 0.5F, 0.4F);
+        if (ESConfig.soundToggles.esSpawnerSound) ESSoundManager.playSoundWorld(ESSoundEvents.mob_spawner, this.getSpawnerPosition());
     }
 }

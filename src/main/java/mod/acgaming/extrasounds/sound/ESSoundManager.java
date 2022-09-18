@@ -3,7 +3,7 @@ package mod.acgaming.extrasounds.sound;
 import java.util.Map;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.init.SoundEvents;
+import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.item.*;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
@@ -17,6 +17,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import mod.acgaming.extrasounds.ExtraSounds;
 import mod.acgaming.extrasounds.config.ESConfig;
+import paulscode.sound.SoundSystemConfig;
 
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class ESSoundManager
@@ -24,6 +25,12 @@ public class ESSoundManager
     public static Map<Item, String> soundItemMap = new Object2ObjectOpenHashMap<>();
     public static Map<String, SoundEvent> soundCategoryMap = new Object2ObjectOpenHashMap<>();
     private static long lastPlayed = System.currentTimeMillis();
+
+    public static void preInit()
+    {
+        SoundSystemConfig.setNumberNormalChannels(1024);
+        SoundSystemConfig.setNumberStreamingChannels(32);
+    }
 
     public static void init()
     {
@@ -35,19 +42,20 @@ public class ESSoundManager
     {
         soundCategoryMap.clear();
 
-        soundCategoryMap.put("wood", SoundEvents.BLOCK_WOOD_HIT);
-        soundCategoryMap.put("dirt", SoundEvents.BLOCK_GRAVEL_HIT);
-        soundCategoryMap.put("gravel", SoundEvents.BLOCK_GRAVEL_HIT);
-        soundCategoryMap.put("sand", SoundEvents.BLOCK_SAND_HIT);
-        soundCategoryMap.put("grass", SoundEvents.BLOCK_GRASS_HIT);
-        soundCategoryMap.put("wool", SoundEvents.BLOCK_CLOTH_HIT);
-        soundCategoryMap.put("snow", SoundEvents.BLOCK_SNOW_HIT);
-        soundCategoryMap.put("ingot", SoundEvents.BLOCK_ANVIL_PLACE);
-        soundCategoryMap.put("nugget", SoundEvents.BLOCK_ANVIL_PLACE);
-        soundCategoryMap.put("gem", SoundEvents.BLOCK_NOTE_CHIME);
-        soundCategoryMap.put("dust", SoundEvents.BLOCK_SAND_BREAK);
+        soundCategoryMap.put("wood", ESSoundEvents.pick_place_wood);
+        soundCategoryMap.put("dirt", ESSoundEvents.pick_place_dirt);
+        soundCategoryMap.put("gravel", ESSoundEvents.pick_place_gravel);
+        soundCategoryMap.put("sand", ESSoundEvents.pick_place_sand);
+        soundCategoryMap.put("grass", ESSoundEvents.pick_place_grass);
+        soundCategoryMap.put("wool", ESSoundEvents.pick_place_wool);
+        soundCategoryMap.put("snow", ESSoundEvents.pick_place_snow);
+        soundCategoryMap.put("ingot", ESSoundEvents.pick_place_ingot);
+        soundCategoryMap.put("nugget", ESSoundEvents.pick_place_nugget);
+        soundCategoryMap.put("gem", ESSoundEvents.pick_place_gem);
+        soundCategoryMap.put("dust", ESSoundEvents.pick_place_dust);
     }
 
+    @SuppressWarnings("ConstantConditions")
     public static void initSoundItemMap()
     {
         soundItemMap.clear();
@@ -76,8 +84,11 @@ public class ESSoundManager
                             //ITERATE OVER ORE DICTIONARY ENTRIES
                             for (ItemStack oreStack : OreDictionary.getOres(oreName))
                             {
-                                ExtraSounds.LOGGER.info("Adding item " + oreStack.getItem().getRegistryName() + " to category " + sCategory);
-                                soundItemMap.put(oreStack.getItem(), sCategory);
+                                if (!soundItemMap.containsKey(oreStack.getItem()))
+                                {
+                                    ExtraSounds.LOGGER.info("Adding item " + oreStack.getDisplayName() + " to category " + sCategory.toUpperCase());
+                                    soundItemMap.put(oreStack.getItem(), sCategory);
+                                }
                             }
                         }
                     }
@@ -88,7 +99,7 @@ public class ESSoundManager
                     ResourceLocation resLoc = new ResourceLocation(sResLoc);
                     if (ForgeRegistries.ITEMS.containsKey(resLoc))
                     {
-                        ExtraSounds.LOGGER.info("Adding item " + ForgeRegistries.ITEMS.getValue(resLoc).getRegistryName() + " to category " + sCategory);
+                        ExtraSounds.LOGGER.info("Adding item " + new ItemStack(ForgeRegistries.ITEMS.getValue(resLoc)).getDisplayName() + " to category " + sCategory.toUpperCase());
                         soundItemMap.put(ForgeRegistries.ITEMS.getValue(resLoc), sCategory);
                     }
                 }
@@ -105,7 +116,7 @@ public class ESSoundManager
         long now = System.currentTimeMillis();
         if (now - lastPlayed > 5)
         {
-            Minecraft.getMinecraft().world.playSound(Minecraft.getMinecraft().player, Minecraft.getMinecraft().player.getPosition(), soundEvent, SoundCategory.PLAYERS, volume, pitch - 0.1F + randomOffset());
+            Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getRecord(soundEvent, pitch, volume));
             lastPlayed = now;
         }
     }
@@ -115,7 +126,7 @@ public class ESSoundManager
         long now = System.currentTimeMillis();
         if (now - lastPlayed > 5)
         {
-            Minecraft.getMinecraft().world.playSound(Minecraft.getMinecraft().player, Minecraft.getMinecraft().player.getPosition(), soundEvent, SoundCategory.PLAYERS, 1.0F, 0.9F + randomOffset());
+            Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getRecord(soundEvent, 1.0F, 1.0F));
             lastPlayed = now;
         }
     }
@@ -151,23 +162,23 @@ public class ESSoundManager
 
         if (item instanceof ItemBlock)
         {
-            playSoundPlayer(((ItemBlock) stackIn.getItem()).getBlock().getSoundType().getHitSound(), 2.0F, (float) ESConfig.soundVolume.esPickPlaceDefaultSound);
+            playSoundPlayer(((ItemBlock) stackIn.getItem()).getBlock().getSoundType().getHitSound(), 2.0F, 0.4F);
         }
         else if (item instanceof ItemFood)
         {
-            playSoundPlayer(SoundEvents.BLOCK_SLIME_STEP, 2.0F, (float) ESConfig.soundVolume.esPickPlaceFoodSound);
+            playSoundPlayer(ESSoundEvents.pick_place_food);
         }
         else if (item instanceof ItemArmor)
         {
-            playSoundPlayer(((ItemArmor) stackIn.getItem()).getArmorMaterial().getSoundEvent(), 1.0F, (float) ESConfig.soundVolume.esPickPlaceArmorSound);
+            playSoundPlayer(((ItemArmor) stackIn.getItem()).getArmorMaterial().getSoundEvent(), 1.0F, 0.8F);
         }
         else if (soundItemMap.containsKey(item))
         {
-            playSoundPlayer(soundCategoryMap.get(soundItemMap.get(item)), 2.0F, (float) ESConfig.soundVolume.esPickPlaceDefaultSound);
+            playSoundPlayer(soundCategoryMap.get(soundItemMap.get(item)));
         }
         else
         {
-            playSoundPlayer(SoundEvents.BLOCK_STONE_HIT, 2.0F, (float) ESConfig.soundVolume.esPickPlaceDefaultSound);
+            playSoundPlayer(ESSoundEvents.pick_place_generic);
         }
     }
 }
