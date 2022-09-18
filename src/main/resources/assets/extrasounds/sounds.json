@@ -219,5 +219,165 @@
       "extrasounds:block/beacon/power2",
       "extrasounds:block/beacon/power3"
     ]
+  },
+  "effect_add_positive": {
+    "sounds": [
+      {
+        "name": "minecraft:block.chorus_flower.grow",
+        "volume": 1,
+        "pitch": 2,
+        "type": "event"
+      }
+    ]
+  },
+  "effect_add_negative": {
+    "sounds": [
+      {
+        "attenuation_distance": 8,
+        "volume": 1,
+        "pitch": 2,
+        "name": "extrasounds:block/conduit/short1"
+      },
+      {
+        "attenuation_distance": 8,
+        "volume": 1,
+        "pitch": 2,
+        "name": "extrasounds:block/conduit/short2"
+      },
+      {
+        "attenuation_distance": 8,
+        "volume": 1,
+        "pitch": 2,
+        "name": "extrasounds:block/conduit/short3"
+      },
+      {
+        "attenuation_distance": 8,
+        "volume": 1,
+        "pitch": 2,
+        "name": "extrasounds:block/conduit/short4"
+      },
+      {
+        "attenuation_distance": 8,
+        "volume": 1,
+        "pitch": 2,
+        "name": "extrasounds:block/conduit/short5"
+      },
+      {
+        "attenuation_distance": 8,
+        "volume": 1,
+        "pitch": 2,
+        "name": "extrasounds:block/conduit/short6"
+      },
+      {
+        "attenuation_distance": 8,
+        "volume": 1,
+        "pitch": 2,
+        "name": "extrasounds:block/conduit/short7"
+      },
+      {
+        "attenuation_distance": 8,
+        "volume": 1,
+        "pitch": 2,
+        "name": "extrasounds:block/conduit/short8"
+      },
+      {
+        "attenuation_distance": 8,
+        "volume": 1,
+        "pitch": 2,
+        "name": "extrasounds:block/conduit/short9"
+      }
+    ]
+  },
+  "effect_remove_positive": {
+    "sounds": [
+      {
+        "name": "minecraft:block.chorus_flower.grow",
+        "volume": 1,
+        "pitch": 1,
+        "type": "event"
+      }
+    ]
+  },
+  "effect_remove_negative": {
+    "sounds": [
+      {
+        "attenuation_distance": 12,
+        "name": "extrasounds:enchant/soulspeed/soulspeed1",
+        "volume": 1,
+        "pitch": 0.8
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "extrasounds:enchant/soulspeed/soulspeed2",
+        "volume": 1,
+        "pitch": 0.8
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "extrasounds:enchant/soulspeed/soulspeed3",
+        "volume": 1,
+        "pitch": 0.8
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "extrasounds:enchant/soulspeed/soulspeed4",
+        "volume": 1,
+        "pitch": 0.8
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "extrasounds:enchant/soulspeed/soulspeed5",
+        "volume": 1,
+        "pitch": 0.8
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "extrasounds:enchant/soulspeed/soulspeed6",
+        "volume": 1,
+        "pitch": 0.8
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "extrasounds:enchant/soulspeed/soulspeed7",
+        "volume": 1,
+        "pitch": 0.8
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "extrasounds:enchant/soulspeed/soulspeed8",
+        "volume": 1,
+        "pitch": 0.8
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "extrasounds:enchant/soulspeed/soulspeed9",
+        "volume": 1,
+        "pitch": 0.8
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "extrasounds:enchant/soulspeed/soulspeed10",
+        "volume": 1,
+        "pitch": 0.8
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "extrasounds:enchant/soulspeed/soulspeed11",
+        "volume": 1,
+        "pitch": 0.8
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "extrasounds:enchant/soulspeed/soulspeed12",
+        "volume": 1,
+        "pitch": 0.8
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "extrasounds:enchant/soulspeed/soulspeed13",
+        "volume": 1,
+        "pitch": 0.8
+      }
+    ]
   }
 }

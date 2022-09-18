@@ -10,6 +10,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import mod.acgaming.extrasounds.ExtraSounds;
 import mod.acgaming.extrasounds.config.ESConfig;
 import mod.acgaming.extrasounds.sound.ESSoundEvents;
 import mod.acgaming.extrasounds.sound.ESSoundManager;
@@ -24,7 +25,7 @@ public class ItemSeedsMixin
     @Inject(method = "onItemUse", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;shrink(I)V"))
     public void esCropSound(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ, CallbackInfoReturnable<EnumActionResult> cir)
     {
-        if (worldIn.isRemote && ESConfig.soundToggles.esCropSound)
+        if (worldIn.isRemote && ESConfig.soundToggles.esCropSound && !ExtraSounds.asmc)
         {
             if (worldIn.getBlockState(pos).getBlock() instanceof BlockFarmland)
             {

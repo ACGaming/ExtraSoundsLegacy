@@ -9,6 +9,7 @@ import net.minecraft.tileentity.TileEntityBeacon;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.ITickable;
 
+import mod.acgaming.extrasounds.ExtraSounds;
 import mod.acgaming.extrasounds.config.ESConfig;
 import mod.acgaming.extrasounds.sound.ESSoundEvents;
 import mod.acgaming.extrasounds.sound.ESSoundManager;
@@ -48,7 +49,7 @@ public abstract class TileEntityBeaconMixin extends TileEntityLockable implement
     @Inject(method = "updateBeacon", at = @At(value = "TAIL"))
     public void esBeaconSoundAmbient(CallbackInfo ci)
     {
-        if (ESConfig.soundToggles.esBeaconSound && this.isComplete)
+        if (ESConfig.soundToggles.esBeaconSound && !ExtraSounds.asmc && this.isComplete)
         {
             ESSoundManager.playSoundWorld(ESSoundEvents.beacon_ambient, this.pos);
             if (this.primaryEffect != primaryEffectCached || this.secondaryEffect != secondaryEffectCached)
@@ -63,7 +64,7 @@ public abstract class TileEntityBeaconMixin extends TileEntityLockable implement
     @Inject(method = "shouldBeamRender", at = @At(value = "HEAD"))
     public void esBeaconSound(CallbackInfoReturnable<Float> cir)
     {
-        if (ESConfig.soundToggles.esBeaconSound)
+        if (ESConfig.soundToggles.esBeaconSound && !ExtraSounds.asmc)
         {
             if (this.isComplete && !currentState)
             {
@@ -80,7 +81,7 @@ public abstract class TileEntityBeaconMixin extends TileEntityLockable implement
     @Inject(method = "setInventorySlotContents", at = @At(value = "TAIL"))
     public void esBeaconSoundPower(int index, ItemStack stack, CallbackInfo ci)
     {
-        if (ESConfig.soundToggles.esBeaconSound)
+        if (ESConfig.soundToggles.esBeaconSound && !ExtraSounds.asmc)
         {
             ESSoundManager.playSoundWorld(ESSoundEvents.beacon_power, this.pos);
         }

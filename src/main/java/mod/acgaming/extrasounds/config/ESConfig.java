@@ -118,6 +118,10 @@ public class ESConfig
         @Config.Name("Beacon Sound")
         @Config.Comment("Play a sound when activating, deactivating and running a beacon")
         public boolean esBeaconSound = true;
+
+        @Config.Name("Potion Sound")
+        @Config.Comment("Play a sound when potion effects get added or removed from an entity")
+        public boolean esPotionSound = true;
     }
 
     public static class SoundVolume

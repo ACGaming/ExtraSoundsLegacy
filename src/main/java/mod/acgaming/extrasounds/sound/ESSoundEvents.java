@@ -27,6 +27,10 @@ public class ESSoundEvents
     public static SoundEvent close_gui;
     public static SoundEvent creative_tab;
     public static SoundEvent drop_item;
+    public static SoundEvent effect_add_positive;
+    public static SoundEvent effect_add_negative;
+    public static SoundEvent effect_remove_positive;
+    public static SoundEvent effect_remove_negative;
     public static SoundEvent hotbar_slot;
     public static SoundEvent jukebox_eject;
     public static SoundEvent jukebox_insert;
@@ -58,6 +62,10 @@ public class ESSoundEvents
         close_gui = register("close_gui");
         creative_tab = register("creative_tab");
         drop_item = register("drop_item");
+        effect_add_positive = register("effect_add_positive");
+        effect_add_negative = register("effect_add_negative");
+        effect_remove_positive = register("effect_remove_positive");
+        effect_remove_negative = register("effect_remove_negative");
         hotbar_slot = register("hotbar_slot");
         jukebox_eject = register("jukebox_eject");
         jukebox_insert = register("jukebox_insert");
@@ -106,6 +114,30 @@ public class ESSoundEvents
         backportMap.put("assets/minecraft/sounds/block/beacon/power2.ogg", "assets/extrasounds/sounds/block/beacon/power2.ogg");
         backportMap.put("assets/minecraft/sounds/block/beacon/power3.ogg", "assets/extrasounds/sounds/block/beacon/power3.ogg");
 
+        // POTION EFFECTS
+        backportMap.put("assets/minecraft/sounds/block/conduit/short1.ogg", "assets/extrasounds/sounds/block/conduit/short1.ogg");
+        backportMap.put("assets/minecraft/sounds/block/conduit/short2.ogg", "assets/extrasounds/sounds/block/conduit/short2.ogg");
+        backportMap.put("assets/minecraft/sounds/block/conduit/short3.ogg", "assets/extrasounds/sounds/block/conduit/short3.ogg");
+        backportMap.put("assets/minecraft/sounds/block/conduit/short4.ogg", "assets/extrasounds/sounds/block/conduit/short4.ogg");
+        backportMap.put("assets/minecraft/sounds/block/conduit/short5.ogg", "assets/extrasounds/sounds/block/conduit/short5.ogg");
+        backportMap.put("assets/minecraft/sounds/block/conduit/short6.ogg", "assets/extrasounds/sounds/block/conduit/short6.ogg");
+        backportMap.put("assets/minecraft/sounds/block/conduit/short7.ogg", "assets/extrasounds/sounds/block/conduit/short7.ogg");
+        backportMap.put("assets/minecraft/sounds/block/conduit/short8.ogg", "assets/extrasounds/sounds/block/conduit/short8.ogg");
+        backportMap.put("assets/minecraft/sounds/block/conduit/short9.ogg", "assets/extrasounds/sounds/block/conduit/short9.ogg");
+        backportMap.put("assets/minecraft/sounds/enchant/soulspeed/soulspeed1.ogg", "assets/extrasounds/sounds/enchant/soulspeed/soulspeed1.ogg");
+        backportMap.put("assets/minecraft/sounds/enchant/soulspeed/soulspeed2.ogg", "assets/extrasounds/sounds/enchant/soulspeed/soulspeed2.ogg");
+        backportMap.put("assets/minecraft/sounds/enchant/soulspeed/soulspeed3.ogg", "assets/extrasounds/sounds/enchant/soulspeed/soulspeed3.ogg");
+        backportMap.put("assets/minecraft/sounds/enchant/soulspeed/soulspeed4.ogg", "assets/extrasounds/sounds/enchant/soulspeed/soulspeed4.ogg");
+        backportMap.put("assets/minecraft/sounds/enchant/soulspeed/soulspeed5.ogg", "assets/extrasounds/sounds/enchant/soulspeed/soulspeed5.ogg");
+        backportMap.put("assets/minecraft/sounds/enchant/soulspeed/soulspeed6.ogg", "assets/extrasounds/sounds/enchant/soulspeed/soulspeed6.ogg");
+        backportMap.put("assets/minecraft/sounds/enchant/soulspeed/soulspeed7.ogg", "assets/extrasounds/sounds/enchant/soulspeed/soulspeed7.ogg");
+        backportMap.put("assets/minecraft/sounds/enchant/soulspeed/soulspeed8.ogg", "assets/extrasounds/sounds/enchant/soulspeed/soulspeed8.ogg");
+        backportMap.put("assets/minecraft/sounds/enchant/soulspeed/soulspeed9.ogg", "assets/extrasounds/sounds/enchant/soulspeed/soulspeed9.ogg");
+        backportMap.put("assets/minecraft/sounds/enchant/soulspeed/soulspeed10.ogg", "assets/extrasounds/sounds/enchant/soulspeed/soulspeed10.ogg");
+        backportMap.put("assets/minecraft/sounds/enchant/soulspeed/soulspeed11.ogg", "assets/extrasounds/sounds/enchant/soulspeed/soulspeed11.ogg");
+        backportMap.put("assets/minecraft/sounds/enchant/soulspeed/soulspeed12.ogg", "assets/extrasounds/sounds/enchant/soulspeed/soulspeed12.ogg");
+        backportMap.put("assets/minecraft/sounds/enchant/soulspeed/soulspeed13.ogg", "assets/extrasounds/sounds/enchant/soulspeed/soulspeed13.ogg");
+
         AssetMoverAPI.fromMinecraft("1.19.2", backportMap);
     }
 
@@ -128,6 +160,10 @@ public class ESSoundEvents
         event.getRegistry().register(close_gui);
         event.getRegistry().register(creative_tab);
         event.getRegistry().register(drop_item);
+        event.getRegistry().register(effect_add_positive);
+        event.getRegistry().register(effect_add_negative);
+        event.getRegistry().register(effect_remove_positive);
+        event.getRegistry().register(effect_remove_negative);
         event.getRegistry().register(hotbar_slot);
         event.getRegistry().register(jukebox_eject);
         event.getRegistry().register(jukebox_insert);
