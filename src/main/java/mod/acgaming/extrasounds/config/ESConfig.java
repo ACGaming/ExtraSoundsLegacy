@@ -134,11 +134,12 @@ public class ESConfig
         })
         public String[] soundArray = new String[]
             {
-                "wood;ore:stickWood",
+                "dust;ore:dust*",
+                "gem;ore:gem*",
                 "ingot;ore:ingot*",
                 "nugget;ore:nugget*",
-                "gem;ore:gem*",
-                "dust;ore:dust*"
+                "snow;ore:snow",
+                "wood;ore:stickWood"
             };
     }
 
