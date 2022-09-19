@@ -3,7 +3,9 @@ package mod.acgaming.extrasounds.sound;
 import java.util.Map;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.PositionedSoundRecord;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.item.*;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
@@ -116,7 +118,9 @@ public class ESSoundManager
         long now = System.currentTimeMillis();
         if (now - lastPlayed > 5)
         {
-            Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getRecord(soundEvent, pitch, volume));
+            Minecraft mc = Minecraft.getMinecraft();
+            EntityPlayerSP player = mc.player;
+            mc.getSoundHandler().playSound(new PositionedSoundRecord(soundEvent.getSoundName(), SoundCategory.PLAYERS, volume, pitch, false, 0, ISound.AttenuationType.NONE, (float) player.posX, (float) player.posY + 32, (float) player.posZ));
             lastPlayed = now;
         }
     }
@@ -126,7 +130,9 @@ public class ESSoundManager
         long now = System.currentTimeMillis();
         if (now - lastPlayed > 5)
         {
-            Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getRecord(soundEvent, 1.0F, 1.0F));
+            Minecraft mc = Minecraft.getMinecraft();
+            EntityPlayerSP player = mc.player;
+            mc.getSoundHandler().playSound(new PositionedSoundRecord(soundEvent.getSoundName(), SoundCategory.PLAYERS, 1.0F, 1.0F, false, 0, ISound.AttenuationType.NONE, (float) player.posX, (float) player.posY + 32, (float) player.posZ));
             lastPlayed = now;
         }
     }
@@ -162,7 +168,7 @@ public class ESSoundManager
 
         if (item instanceof ItemBlock)
         {
-            playSoundPlayer(((ItemBlock) stackIn.getItem()).getBlock().getSoundType().getHitSound(), 2.0F, 0.4F);
+            playSoundPlayer(((ItemBlock) stackIn.getItem()).getBlock().getSoundType().getPlaceSound(), 2.0F, 0.4F);
         }
         else if (item instanceof ItemFood)
         {

@@ -325,8 +325,8 @@
   "pick_place_dirt": {
     "sounds": [
       {
-        "name": "block.gravel.hit",
-        "volume": 0.2,
+        "name": "block.gravel.place",
+        "volume": 0.4,
         "pitch": 2,
         "type": "event"
       }
@@ -335,8 +335,8 @@
   "pick_place_dust": {
     "sounds": [
       {
-        "name": "block.sand.break",
-        "volume": 0.6,
+        "name": "block.sand.place",
+        "volume": 0.4,
         "pitch": 2,
         "type": "event"
       }
@@ -356,7 +356,7 @@
     "sounds": [
       {
         "name": "block.note.chime",
-        "volume": 0.2,
+        "volume": 0.4,
         "pitch": 2,
         "type": "event"
       }
@@ -365,7 +365,7 @@
   "pick_place_generic": {
     "sounds": [
       {
-        "name": "block.stone.hit",
+        "name": "block.stone.place",
         "volume": 0.4,
         "pitch": 2,
         "type": "event"
@@ -375,8 +375,8 @@
   "pick_place_grass": {
     "sounds": [
       {
-        "name": "block.grass.hit",
-        "volume": 0.6,
+        "name": "block.grass.place",
+        "volume": 0.4,
         "pitch": 2,
         "type": "event"
       }
@@ -385,8 +385,8 @@
   "pick_place_gravel": {
     "sounds": [
       {
-        "name": "block.gravel.hit",
-        "volume": 0.2,
+        "name": "block.gravel.place",
+        "volume": 0.4,
         "pitch": 2,
         "type": "event"
       }
@@ -396,7 +396,7 @@
     "sounds": [
       {
         "name": "block.anvil.place",
-        "volume": 0.1,
+        "volume": 0.2,
         "pitch": 2,
         "type": "event"
       }
@@ -406,7 +406,7 @@
     "sounds": [
       {
         "name": "block.anvil.place",
-        "volume": 0.1,
+        "volume": 0.2,
         "pitch": 2,
         "type": "event"
       }
@@ -415,7 +415,7 @@
   "pick_place_sand": {
     "sounds": [
       {
-        "name": "block.sand.hit",
+        "name": "block.sand.place",
         "volume": 0.4,
         "pitch": 2,
         "type": "event"
@@ -425,8 +425,8 @@
   "pick_place_snow": {
     "sounds": [
       {
-        "name": "block.snow.hit",
-        "volume": 0.6,
+        "name": "block.snow.place",
+        "volume": 0.4,
         "pitch": 2,
         "type": "event"
       }
@@ -435,8 +435,8 @@
   "pick_place_wood": {
     "sounds": [
       {
-        "name": "block.wood.hit",
-        "volume": 0.2,
+        "name": "block.wood.place",
+        "volume": 0.4,
         "pitch": 2,
         "type": "event"
       }
@@ -445,7 +445,7 @@
   "pick_place_wool": {
     "sounds": [
       {
-        "name": "block.wool.hit",
+        "name": "block.wool.place",
         "volume": 0.4,
         "pitch": 2,
         "type": "event"
