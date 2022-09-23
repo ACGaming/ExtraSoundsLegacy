@@ -20,15 +20,17 @@ public class GuiContainerCreativeMixin
     @Inject(at = @At("HEAD"), method = "handleMouseClick")
     public void esSlotClickSound(Slot slotIn, int slotId, int mouseButton, ClickType type, CallbackInfo ci)
     {
-        if (ESConfig.soundToggles.esPickPlaceSound)
+        if (ESConfig.soundToggles.esPickPlaceSound && slotIn != null)
         {
-            if (slotIn != null)
+            if (!Minecraft.getMinecraft().player.inventory.getItemStack().isEmpty())
             {
                 // PLACE SOUND
-                if (!Minecraft.getMinecraft().player.inventory.getItemStack().isEmpty()) ESSoundManager.playClickSound(Minecraft.getMinecraft().player.inventory.getItemStack());
-
+                ESSoundManager.playClickSound(Minecraft.getMinecraft().player.inventory.getItemStack());
+            }
+            else if (!slotIn.getStack().isEmpty())
+            {
                 // PICK SOUND
-                if (!slotIn.getStack().isEmpty()) ESSoundManager.playClickSound(slotIn.getStack());
+                ESSoundManager.playClickSound(slotIn.getStack());
             }
         }
     }

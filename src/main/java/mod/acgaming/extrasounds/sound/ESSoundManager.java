@@ -86,7 +86,7 @@ public class ESSoundManager
                             //ITERATE OVER ORE DICTIONARY ENTRIES
                             for (ItemStack oreStack : OreDictionary.getOres(oreName))
                             {
-                                if (!soundItemMap.containsKey(oreStack.getItem()))
+                                if (!oreStack.isEmpty() && !soundItemMap.containsKey(oreStack.getItem()))
                                 {
                                     ExtraSounds.LOGGER.info("Adding item " + oreStack.getDisplayName() + " to category " + sCategory.toUpperCase());
                                     soundItemMap.put(oreStack.getItem(), sCategory);
@@ -164,6 +164,8 @@ public class ESSoundManager
 
     public static void playClickSound(ItemStack stackIn)
     {
+        if (stackIn.isEmpty()) return;
+
         Item item = stackIn.getItem();
 
         if (item instanceof ItemBlock)
