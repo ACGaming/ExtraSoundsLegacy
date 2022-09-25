@@ -27,12 +27,11 @@
   },
   "bonemeal": {
     "sounds": [
-      {
-        "name": "minecraft:entity.arrow.hit_player",
-        "volume": 0.4,
-        "pitch": 2,
-        "type": "event"
-      }
+      "extrasounds:item/bonemeal/bonemeal1",
+      "extrasounds:item/bonemeal/bonemeal2",
+      "extrasounds:item/bonemeal/bonemeal3",
+      "extrasounds:item/bonemeal/bonemeal4",
+      "extrasounds:item/bonemeal/bonemeal5"
     ]
   },
   "chat_mention": {
@@ -74,9 +73,9 @@
   "crafting": {
     "sounds": [
       {
-        "name": "block.anvil.use",
+        "name": "entity.itemframe.remove_item",
         "volume": 0.5,
-        "pitch": 1.2,
+        "pitch": 1.5,
         "type": "event"
       }
     ]
@@ -353,10 +352,24 @@
   "pick_place_gem": {
     "sounds": [
       {
-        "name": "block.note.chime",
+        "name": "extrasounds:block/amethyst/place1",
         "volume": 0.4,
-        "pitch": 2,
-        "type": "event"
+        "pitch": 1.5
+      },
+      {
+        "name": "extrasounds:block/amethyst/place2",
+        "volume": 0.4,
+        "pitch": 1.5
+      },
+      {
+        "name": "extrasounds:block/amethyst/place3",
+        "volume": 0.4,
+        "pitch": 1.5
+      },
+      {
+        "name": "extrasounds:block/amethyst/place4",
+        "volume": 0.4,
+        "pitch": 1.5
       }
     ]
   },
@@ -393,20 +406,68 @@
   "pick_place_ingot": {
     "sounds": [
       {
-        "name": "block.anvil.place",
-        "volume": 0.2,
-        "pitch": 2,
-        "type": "event"
+        "name": "extrasounds:block/copper/step1",
+        "volume": 0.5,
+        "pitch": 1.5
+      },
+      {
+        "name": "extrasounds:block/copper/step2",
+        "volume": 0.5,
+        "pitch": 1.5
+      },
+      {
+        "name": "extrasounds:block/copper/step3",
+        "volume": 0.5,
+        "pitch": 1.5
+      },
+      {
+        "name": "extrasounds:block/copper/step4",
+        "volume": 0.5,
+        "pitch": 1.5
+      },
+      {
+        "name": "extrasounds:block/copper/step5",
+        "volume": 0.5,
+        "pitch": 1.5
+      },
+      {
+        "name": "extrasounds:block/copper/step6",
+        "volume": 0.5,
+        "pitch": 1.5
       }
     ]
   },
   "pick_place_nugget": {
     "sounds": [
       {
-        "name": "block.anvil.place",
-        "volume": 0.2,
-        "pitch": 2,
-        "type": "event"
+        "name": "extrasounds:block/copper/step1",
+        "volume": 0.4,
+        "pitch": 2
+      },
+      {
+        "name": "extrasounds:block/copper/step2",
+        "volume": 0.4,
+        "pitch": 2
+      },
+      {
+        "name": "extrasounds:block/copper/step3",
+        "volume": 0.4,
+        "pitch": 2
+      },
+      {
+        "name": "extrasounds:block/copper/step4",
+        "volume": 0.4,
+        "pitch": 2
+      },
+      {
+        "name": "extrasounds:block/copper/step5",
+        "volume": 0.4,
+        "pitch": 2
+      },
+      {
+        "name": "extrasounds:block/copper/step6",
+        "volume": 0.4,
+        "pitch": 2
       }
     ]
   },
@@ -424,6 +485,16 @@
     "sounds": [
       {
         "name": "block.snow.place",
+        "volume": 0.4,
+        "pitch": 2,
+        "type": "event"
+      }
+    ]
+  },
+  "pick_place_stone": {
+    "sounds": [
+      {
+        "name": "block.stone.place",
         "volume": 0.4,
         "pitch": 2,
         "type": "event"
@@ -470,32 +541,32 @@
   "plant_crop": {
     "sounds": [
       {
-        "name": "extrasounds:plant/crop1",
+        "name": "extrasounds:item/plant/crop1",
         "volume": 0.45,
         "pitch": 1
       },
       {
-        "name": "extrasounds:plant/crop2",
+        "name": "extrasounds:item/plant/crop2",
         "volume": 0.45,
         "pitch": 1
       },
       {
-        "name": "extrasounds:plant/crop3",
+        "name": "extrasounds:item/plant/crop3",
         "volume": 0.45,
         "pitch": 1
       },
       {
-        "name": "extrasounds:plant/crop4",
+        "name": "extrasounds:item/plant/crop4",
         "volume": 0.45,
         "pitch": 1
       },
       {
-        "name": "extrasounds:plant/crop5",
+        "name": "extrasounds:item/plant/crop5",
         "volume": 0.45,
         "pitch": 1
       },
       {
-        "name": "extrasounds:plant/crop6",
+        "name": "extrasounds:item/plant/crop6",
         "volume": 0.45,
         "pitch": 1
       }
@@ -514,32 +585,32 @@
   "plant_netherwart": {
     "sounds": [
       {
-        "name": "extrasounds:plant/netherwart1",
+        "name": "extrasounds:item/plant/netherwart1",
         "volume": 0.9,
         "pitch": 1
       },
       {
-        "name": "extrasounds:plant/netherwart2",
+        "name": "extrasounds:item/plant/netherwart2",
         "volume": 0.9,
         "pitch": 1
       },
       {
-        "name": "extrasounds:plant/netherwart3",
+        "name": "extrasounds:item/plant/netherwart3",
         "volume": 0.9,
         "pitch": 1
       },
       {
-        "name": "extrasounds:plant/netherwart4",
+        "name": "extrasounds:item/plant/netherwart4",
         "volume": 0.9,
         "pitch": 1
       },
       {
-        "name": "extrasounds:plant/netherwart5",
+        "name": "extrasounds:item/plant/netherwart5",
         "volume": 0.9,
         "pitch": 1
       },
       {
-        "name": "extrasounds:plant/netherwart6",
+        "name": "extrasounds:item/plant/netherwart6",
         "volume": 0.9,
         "pitch": 1
       }

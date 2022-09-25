@@ -50,6 +50,7 @@ public class ESSoundEvents
     public static SoundEvent pick_place_nugget;
     public static SoundEvent pick_place_sand;
     public static SoundEvent pick_place_snow;
+    public static SoundEvent pick_place_stone;
     public static SoundEvent pick_place_wood;
     public static SoundEvent pick_place_wool;
     public static SoundEvent place_boat;
@@ -102,6 +103,7 @@ public class ESSoundEvents
         pick_place_nugget = register("pick_place_nugget");
         pick_place_sand = register("pick_place_sand");
         pick_place_snow = register("pick_place_snow");
+        pick_place_stone = register("pick_place_stone");
         pick_place_wood = register("pick_place_wood");
         pick_place_wool = register("pick_place_wool");
         place_boat = register("place_boat");
@@ -130,20 +132,20 @@ public class ESSoundEvents
         backportMap.put("assets/minecraft/sounds/block/bamboo/step6.ogg", "assets/extrasounds/sounds/block/bamboo/step6.ogg");
 
         // PLANT CROP
-        backportMap.put("assets/minecraft/sounds/item/plant/crop1.ogg", "assets/extrasounds/sounds/plant/crop1.ogg");
-        backportMap.put("assets/minecraft/sounds/item/plant/crop2.ogg", "assets/extrasounds/sounds/plant/crop2.ogg");
-        backportMap.put("assets/minecraft/sounds/item/plant/crop3.ogg", "assets/extrasounds/sounds/plant/crop3.ogg");
-        backportMap.put("assets/minecraft/sounds/item/plant/crop4.ogg", "assets/extrasounds/sounds/plant/crop4.ogg");
-        backportMap.put("assets/minecraft/sounds/item/plant/crop5.ogg", "assets/extrasounds/sounds/plant/crop5.ogg");
-        backportMap.put("assets/minecraft/sounds/item/plant/crop6.ogg", "assets/extrasounds/sounds/plant/crop6.ogg");
+        backportMap.put("assets/minecraft/sounds/item/plant/crop1.ogg", "assets/extrasounds/sounds/item/plant/crop1.ogg");
+        backportMap.put("assets/minecraft/sounds/item/plant/crop2.ogg", "assets/extrasounds/sounds/item/plant/crop2.ogg");
+        backportMap.put("assets/minecraft/sounds/item/plant/crop3.ogg", "assets/extrasounds/sounds/item/plant/crop3.ogg");
+        backportMap.put("assets/minecraft/sounds/item/plant/crop4.ogg", "assets/extrasounds/sounds/item/plant/crop4.ogg");
+        backportMap.put("assets/minecraft/sounds/item/plant/crop5.ogg", "assets/extrasounds/sounds/item/plant/crop5.ogg");
+        backportMap.put("assets/minecraft/sounds/item/plant/crop6.ogg", "assets/extrasounds/sounds/item/plant/crop6.ogg");
 
         // PLANT NETHERWART
-        backportMap.put("assets/minecraft/sounds/item/plant/netherwart1.ogg", "assets/extrasounds/sounds/plant/netherwart1.ogg");
-        backportMap.put("assets/minecraft/sounds/item/plant/netherwart2.ogg", "assets/extrasounds/sounds/plant/netherwart2.ogg");
-        backportMap.put("assets/minecraft/sounds/item/plant/netherwart3.ogg", "assets/extrasounds/sounds/plant/netherwart3.ogg");
-        backportMap.put("assets/minecraft/sounds/item/plant/netherwart4.ogg", "assets/extrasounds/sounds/plant/netherwart4.ogg");
-        backportMap.put("assets/minecraft/sounds/item/plant/netherwart5.ogg", "assets/extrasounds/sounds/plant/netherwart5.ogg");
-        backportMap.put("assets/minecraft/sounds/item/plant/netherwart6.ogg", "assets/extrasounds/sounds/plant/netherwart6.ogg");
+        backportMap.put("assets/minecraft/sounds/item/plant/netherwart1.ogg", "assets/extrasounds/sounds/item/plant/netherwart1.ogg");
+        backportMap.put("assets/minecraft/sounds/item/plant/netherwart2.ogg", "assets/extrasounds/sounds/item/plant/netherwart2.ogg");
+        backportMap.put("assets/minecraft/sounds/item/plant/netherwart3.ogg", "assets/extrasounds/sounds/item/plant/netherwart3.ogg");
+        backportMap.put("assets/minecraft/sounds/item/plant/netherwart4.ogg", "assets/extrasounds/sounds/item/plant/netherwart4.ogg");
+        backportMap.put("assets/minecraft/sounds/item/plant/netherwart5.ogg", "assets/extrasounds/sounds/item/plant/netherwart5.ogg");
+        backportMap.put("assets/minecraft/sounds/item/plant/netherwart6.ogg", "assets/extrasounds/sounds/item/plant/netherwart6.ogg");
 
         // BEACON
         backportMap.put("assets/minecraft/sounds/block/beacon/ambient.ogg", "assets/extrasounds/sounds/block/beacon/ambient.ogg");
@@ -176,6 +178,27 @@ public class ESSoundEvents
         backportMap.put("assets/minecraft/sounds/enchant/soulspeed/soulspeed11.ogg", "assets/extrasounds/sounds/enchant/soulspeed/soulspeed11.ogg");
         backportMap.put("assets/minecraft/sounds/enchant/soulspeed/soulspeed12.ogg", "assets/extrasounds/sounds/enchant/soulspeed/soulspeed12.ogg");
         backportMap.put("assets/minecraft/sounds/enchant/soulspeed/soulspeed13.ogg", "assets/extrasounds/sounds/enchant/soulspeed/soulspeed13.ogg");
+
+        // METAL
+        backportMap.put("assets/minecraft/sounds/block/copper/step1.ogg", "assets/extrasounds/sounds/block/copper/step1.ogg");
+        backportMap.put("assets/minecraft/sounds/block/copper/step2.ogg", "assets/extrasounds/sounds/block/copper/step2.ogg");
+        backportMap.put("assets/minecraft/sounds/block/copper/step3.ogg", "assets/extrasounds/sounds/block/copper/step3.ogg");
+        backportMap.put("assets/minecraft/sounds/block/copper/step4.ogg", "assets/extrasounds/sounds/block/copper/step4.ogg");
+        backportMap.put("assets/minecraft/sounds/block/copper/step5.ogg", "assets/extrasounds/sounds/block/copper/step5.ogg");
+        backportMap.put("assets/minecraft/sounds/block/copper/step6.ogg", "assets/extrasounds/sounds/block/copper/step6.ogg");
+
+        // GEM
+        backportMap.put("assets/minecraft/sounds/block/amethyst/place1.ogg", "assets/extrasounds/sounds/block/amethyst/place1.ogg");
+        backportMap.put("assets/minecraft/sounds/block/amethyst/place2.ogg", "assets/extrasounds/sounds/block/amethyst/place2.ogg");
+        backportMap.put("assets/minecraft/sounds/block/amethyst/place3.ogg", "assets/extrasounds/sounds/block/amethyst/place3.ogg");
+        backportMap.put("assets/minecraft/sounds/block/amethyst/place4.ogg", "assets/extrasounds/sounds/block/amethyst/place4.ogg");
+
+        // BONEMEAL
+        backportMap.put("assets/minecraft/sounds/item/bonemeal/bonemeal1.ogg", "assets/extrasounds/sounds/item/bonemeal/bonemeal1.ogg");
+        backportMap.put("assets/minecraft/sounds/item/bonemeal/bonemeal2.ogg", "assets/extrasounds/sounds/item/bonemeal/bonemeal2.ogg");
+        backportMap.put("assets/minecraft/sounds/item/bonemeal/bonemeal3.ogg", "assets/extrasounds/sounds/item/bonemeal/bonemeal3.ogg");
+        backportMap.put("assets/minecraft/sounds/item/bonemeal/bonemeal4.ogg", "assets/extrasounds/sounds/item/bonemeal/bonemeal4.ogg");
+        backportMap.put("assets/minecraft/sounds/item/bonemeal/bonemeal5.ogg", "assets/extrasounds/sounds/item/bonemeal/bonemeal5.ogg");
 
         ExtraSounds.LOGGER.info("Downloading Minecraft 1.19.2 sounds, this could take a while...");
         AssetMoverAPI.fromMinecraft("1.19.2", backportMap);
@@ -224,6 +247,7 @@ public class ESSoundEvents
         event.getRegistry().register(pick_place_nugget);
         event.getRegistry().register(pick_place_sand);
         event.getRegistry().register(pick_place_snow);
+        event.getRegistry().register(pick_place_stone);
         event.getRegistry().register(pick_place_wood);
         event.getRegistry().register(pick_place_wool);
         event.getRegistry().register(place_boat);

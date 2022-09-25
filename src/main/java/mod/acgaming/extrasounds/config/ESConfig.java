@@ -129,7 +129,7 @@ public class ESConfig
         @Config.Name("Pick/Place Sounds")
         @Config.Comment({
             "Categories of sounds when picking and placing items in GUIs",
-            "Available categories: wood, dirt, gravel, sand, grass, wool, snow, ingot, nugget, gem, dust",
+            "Available categories: dirt, dust, gem, grass, gravel, ingot, nugget, sand, snow, stone, wood, wool",
             "Syntax: CATEGORY;REGISTRY_NAME",
             "Use * for ore dictionary wildcards",
             "Examples | ingot;ore:example_ore | gem;mod_id:example_item"
@@ -141,7 +141,32 @@ public class ESConfig
                 "ingot;ore:ingot*",
                 "nugget;ore:nugget*",
                 "snow;ore:snow",
-                "wood;ore:stickWood"
+                "stone;ore:stone*",
+                "gem;minecraft:diamond_axe",
+                "gem;minecraft:diamond_hoe",
+                "gem;minecraft:diamond_pickaxe",
+                "gem;minecraft:diamond_shovel",
+                "gem;minecraft:diamond_sword",
+                "ingot;minecraft:golden_axe",
+                "ingot;minecraft:golden_hoe",
+                "ingot;minecraft:golden_pickaxe",
+                "ingot;minecraft:golden_shovel",
+                "ingot;minecraft:golden_sword",
+                "ingot;minecraft:iron_axe",
+                "ingot;minecraft:iron_hoe",
+                "ingot;minecraft:iron_pickaxe",
+                "ingot;minecraft:iron_shovel",
+                "ingot;minecraft:iron_sword",
+                "stone;minecraft:stone_axe",
+                "stone;minecraft:stone_hoe",
+                "stone;minecraft:stone_pickaxe",
+                "stone;minecraft:stone_shovel",
+                "stone;minecraft:stone_sword",
+                "wood;minecraft:wooden_axe",
+                "wood;minecraft:wooden_hoe",
+                "wood;minecraft:wooden_pickaxe",
+                "wood;minecraft:wooden_shovel",
+                "wood;minecraft:wooden_sword"
             };
     }
 
