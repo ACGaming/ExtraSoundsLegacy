@@ -120,7 +120,14 @@ public class ESSoundManager
         {
             Minecraft mc = Minecraft.getMinecraft();
             EntityPlayerSP player = mc.player;
-            mc.getSoundHandler().playSound(new PositionedSoundRecord(soundEvent.getSoundName(), SoundCategory.PLAYERS, volume, pitch, false, 0, ISound.AttenuationType.NONE, (float) player.posX, (float) player.posY + 32, (float) player.posZ));
+            if (player != null)
+            {
+                mc.getSoundHandler().playSound(new PositionedSoundRecord(soundEvent.getSoundName(), SoundCategory.PLAYERS, volume, pitch, false, 0, ISound.AttenuationType.NONE, (float) player.posX, (float) player.posY + 32, (float) player.posZ));
+            }
+            else
+            {
+                mc.getSoundHandler().playSound(new PositionedSoundRecord(soundEvent.getSoundName(), SoundCategory.MASTER, volume, pitch, false, 0, ISound.AttenuationType.NONE, 0F, 0F, 0F));
+            }
             lastPlayed = now;
         }
     }
@@ -132,7 +139,14 @@ public class ESSoundManager
         {
             Minecraft mc = Minecraft.getMinecraft();
             EntityPlayerSP player = mc.player;
-            mc.getSoundHandler().playSound(new PositionedSoundRecord(soundEvent.getSoundName(), SoundCategory.PLAYERS, 1.0F, 1.0F, false, 0, ISound.AttenuationType.NONE, (float) player.posX, (float) player.posY + 32, (float) player.posZ));
+            if (player != null)
+            {
+                mc.getSoundHandler().playSound(new PositionedSoundRecord(soundEvent.getSoundName(), SoundCategory.PLAYERS, 1.0F, 1.0F, false, 0, ISound.AttenuationType.NONE, (float) player.posX, (float) player.posY + 32, (float) player.posZ));
+            }
+            else
+            {
+                mc.getSoundHandler().playSound(new PositionedSoundRecord(soundEvent.getSoundName(), SoundCategory.MASTER, 1.0F, 1.0F, false, 0, ISound.AttenuationType.NONE, 0F, 0F, 0F));
+            }
             lastPlayed = now;
         }
     }
