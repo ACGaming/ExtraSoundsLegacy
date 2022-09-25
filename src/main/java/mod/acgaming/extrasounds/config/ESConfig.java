@@ -12,11 +12,14 @@ import mod.acgaming.extrasounds.sound.ESSoundManager;
 @Config(modid = ExtraSounds.MODID, name = "ExtraSounds")
 public class ESConfig
 {
-    @Config.Name("Toggles")
+    @Config.Name("Sound Toggles")
     public static SoundToggles soundToggles = new SoundToggles();
 
     @Config.Name("Pick/Place Categories")
     public static SoundCategories soundCategories = new SoundCategories();
+
+    @Config.Name("Miscellaneous Settings")
+    public static MiscSettings miscSettings = new MiscSettings();
 
     public static class SoundToggles
     {
@@ -126,7 +129,6 @@ public class ESConfig
         @Config.Name("Pick/Place Sounds")
         @Config.Comment({
             "Categories of sounds when picking and placing items in GUIs",
-            "This won't affect blocks, food and armor as these are evaluated automatically",
             "Available categories: wood, dirt, gravel, sand, grass, wool, snow, ingot, nugget, gem, dust",
             "Syntax: CATEGORY;REGISTRY_NAME",
             "Use * for ore dictionary wildcards",
@@ -141,6 +143,16 @@ public class ESConfig
                 "snow;ore:snow",
                 "wood;ore:stickWood"
             };
+    }
+
+    public static class MiscSettings
+    {
+        @Config.Name("Increase Sound Channels")
+        @Config.Comment({
+            "Increase sound channels to improve audio playback",
+            "Disable this if you're facing sound issues or have another mod installed handling this"
+        })
+        public boolean esSoundChannels = true;
     }
 
     @Mod.EventBusSubscriber(modid = ExtraSounds.MODID)

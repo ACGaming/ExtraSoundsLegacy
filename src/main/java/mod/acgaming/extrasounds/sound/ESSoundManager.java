@@ -6,11 +6,15 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.init.Items;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.*;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.UniversalBucket;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
@@ -24,20 +28,25 @@ import paulscode.sound.SoundSystemConfig;
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class ESSoundManager
 {
-    public static Map<Item, String> soundItemMap = new Object2ObjectOpenHashMap<>();
     public static Map<String, SoundEvent> soundCategoryMap = new Object2ObjectOpenHashMap<>();
+    public static Map<Item, String> soundItemMap = new Object2ObjectOpenHashMap<>();
+    public static Map<Item, SoundEvent> soundFinalMap = new Object2ObjectOpenHashMap<>();
     private static long lastPlayed = System.currentTimeMillis();
 
     public static void preInit()
     {
-        SoundSystemConfig.setNumberNormalChannels(1024);
-        SoundSystemConfig.setNumberStreamingChannels(32);
+        if (ESConfig.miscSettings.esSoundChannels)
+        {
+            SoundSystemConfig.setNumberNormalChannels(1024);
+            SoundSystemConfig.setNumberStreamingChannels(32);
+        }
     }
 
     public static void init()
     {
         initSoundCategoryMap();
         initSoundItemMap();
+        initSoundFinalMap();
     }
 
     public static void initSoundCategoryMap()
@@ -113,6 +122,34 @@ public class ESSoundManager
         }
     }
 
+    public static void initSoundFinalMap()
+    {
+        soundFinalMap.clear();
+
+        try
+        {
+            for (Item item : ForgeRegistries.ITEMS.getValuesCollection())
+            {
+                SoundEvent soundEvent = null;
+                if (item instanceof ItemBlock) soundEvent = ((ItemBlock) item).getBlock().getSoundType().getPlaceSound();
+                else if (item instanceof ItemFood) soundEvent = ESSoundEvents.pick_place_food;
+                else if (item instanceof ItemArmor) soundEvent = ((ItemArmor) item).getArmorMaterial().getSoundEvent();
+                else if (item == Items.WATER_BUCKET) soundEvent = SoundEvents.ITEM_BUCKET_FILL;
+                else if (item == Items.LAVA_BUCKET) soundEvent = SoundEvents.ITEM_BUCKET_FILL_LAVA;
+                else if (item instanceof UniversalBucket)
+                {
+                    FluidStack fluidStack = ((UniversalBucket) item).getFluid(new ItemStack(item));
+                    if (fluidStack != null) soundEvent = fluidStack.getFluid().getFillSound();
+                }
+                if (soundEvent != null) soundFinalMap.put(item, soundEvent);
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
     public static void playSoundPlayer(SoundEvent soundEvent, float pitch, float volume)
     {
         long now = System.currentTimeMillis();
@@ -120,14 +157,8 @@ public class ESSoundManager
         {
             Minecraft mc = Minecraft.getMinecraft();
             EntityPlayerSP player = mc.player;
-            if (player != null)
-            {
-                mc.getSoundHandler().playSound(new PositionedSoundRecord(soundEvent.getSoundName(), SoundCategory.PLAYERS, volume, pitch, false, 0, ISound.AttenuationType.NONE, (float) player.posX, (float) player.posY + 32, (float) player.posZ));
-            }
-            else
-            {
-                mc.getSoundHandler().playSound(new PositionedSoundRecord(soundEvent.getSoundName(), SoundCategory.MASTER, volume, pitch, false, 0, ISound.AttenuationType.NONE, 0F, 0F, 0F));
-            }
+            if (player != null) mc.getSoundHandler().playSound(new PositionedSoundRecord(soundEvent.getSoundName(), SoundCategory.PLAYERS, volume, pitch, false, 0, ISound.AttenuationType.NONE, (float) player.posX, (float) player.posY + 32, (float) player.posZ));
+            else mc.getSoundHandler().playSound(new PositionedSoundRecord(soundEvent.getSoundName(), SoundCategory.MASTER, volume, pitch, false, 0, ISound.AttenuationType.NONE, 0F, 0F, 0F));
             lastPlayed = now;
         }
     }
@@ -139,14 +170,8 @@ public class ESSoundManager
         {
             Minecraft mc = Minecraft.getMinecraft();
             EntityPlayerSP player = mc.player;
-            if (player != null)
-            {
-                mc.getSoundHandler().playSound(new PositionedSoundRecord(soundEvent.getSoundName(), SoundCategory.PLAYERS, 1.0F, 1.0F, false, 0, ISound.AttenuationType.NONE, (float) player.posX, (float) player.posY + 32, (float) player.posZ));
-            }
-            else
-            {
-                mc.getSoundHandler().playSound(new PositionedSoundRecord(soundEvent.getSoundName(), SoundCategory.MASTER, 1.0F, 1.0F, false, 0, ISound.AttenuationType.NONE, 0F, 0F, 0F));
-            }
+            if (player != null) mc.getSoundHandler().playSound(new PositionedSoundRecord(soundEvent.getSoundName(), SoundCategory.PLAYERS, 1.0F, 1.0F, false, 0, ISound.AttenuationType.NONE, (float) player.posX, (float) player.posY + 32, (float) player.posZ));
+            else mc.getSoundHandler().playSound(new PositionedSoundRecord(soundEvent.getSoundName(), SoundCategory.MASTER, 1.0F, 1.0F, false, 0, ISound.AttenuationType.NONE, 0F, 0F, 0F));
             lastPlayed = now;
         }
     }
@@ -182,25 +207,8 @@ public class ESSoundManager
 
         Item item = stackIn.getItem();
 
-        if (item instanceof ItemBlock)
-        {
-            playSoundPlayer(((ItemBlock) stackIn.getItem()).getBlock().getSoundType().getPlaceSound(), 2.0F, 0.4F);
-        }
-        else if (item instanceof ItemFood)
-        {
-            playSoundPlayer(ESSoundEvents.pick_place_food);
-        }
-        else if (item instanceof ItemArmor)
-        {
-            playSoundPlayer(((ItemArmor) stackIn.getItem()).getArmorMaterial().getSoundEvent(), 1.0F, 0.8F);
-        }
-        else if (soundItemMap.containsKey(item))
-        {
-            playSoundPlayer(soundCategoryMap.get(soundItemMap.get(item)));
-        }
-        else
-        {
-            playSoundPlayer(ESSoundEvents.pick_place_generic);
-        }
+        if (soundItemMap.containsKey(item)) playSoundPlayer(soundCategoryMap.get(soundItemMap.get(item)));
+        else if (soundFinalMap.containsKey(item)) playSoundPlayer(soundFinalMap.get(item), 2.0F, 0.4F);
+        else playSoundPlayer(ESSoundEvents.pick_place_generic);
     }
 }

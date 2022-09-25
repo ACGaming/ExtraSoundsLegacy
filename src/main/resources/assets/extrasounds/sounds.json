@@ -346,8 +346,6 @@
     "sounds": [
       {
         "name": "block.slime.step",
-        "volume": 0.2,
-        "pitch": 2,
         "type": "event"
       }
     ]

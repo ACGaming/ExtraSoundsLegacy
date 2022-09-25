@@ -4,7 +4,6 @@ import java.util.Map;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -116,8 +115,6 @@ public class ESSoundEvents
         teleport_ender_pearl = register("teleport_ender_pearl");
         typing = register("typing");
         use_spawn_egg = register("use_spawn_egg");
-
-        MinecraftForge.EVENT_BUS.register(ESSoundEvents.class);
     }
 
     public static void getBackportedSounds()
