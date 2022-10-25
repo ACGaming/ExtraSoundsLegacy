@@ -223,7 +223,7 @@ public class ESSoundManager
 
     public static float randomOffset()
     {
-        return Minecraft.getMinecraft().world.rand.nextFloat() * 0.2F;
+        return Minecraft.getMinecraft().world != null ? Minecraft.getMinecraft().world.rand.nextFloat() * 0.2F : 0.1F;
     }
 
     public static void playClickSound(ItemStack stackIn)
