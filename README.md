@@ -32,4 +32,4 @@ Includes:
 
 All listed sounds are toggleable.
 
-Requires [MixinBooter](https://www.curseforge.com/minecraft/mc-mods/mixin-booter).
+Requires [MixinBooter](https://www.curseforge.com/minecraft/mc-mods/mixin-booter) and [AssetMover](https://www.curseforge.com/minecraft/mc-mods/assetmover).
