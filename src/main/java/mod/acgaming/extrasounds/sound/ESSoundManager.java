@@ -203,6 +203,7 @@ public class ESSoundManager
 
     public static void playSoundWorld(SoundEvent soundEvent, BlockPos blockPos, float pitch, float volume)
     {
+        if (Minecraft.getMinecraft().world == null) return;
         long now = System.currentTimeMillis();
         if (now - lastPlayed > 5)
         {
@@ -213,6 +214,7 @@ public class ESSoundManager
 
     public static void playSoundWorld(SoundEvent soundEvent, BlockPos blockPos)
     {
+        if (Minecraft.getMinecraft().world == null) return;
         long now = System.currentTimeMillis();
         if (now - lastPlayed > 5)
         {
