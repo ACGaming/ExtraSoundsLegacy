@@ -45,13 +45,13 @@ public abstract class EntityPlayerMixin extends EntityLivingBase
         {
             if (id.getPotion().isBadEffect())
             {
-                ESSoundManager.playSoundWorld(ESSoundEvents.effect_add_negative, this.getPosition());
-                ESSoundManager.playSoundWorld(ESSoundEvents.effect_add_negative, this.getPosition());
+                ESSoundManager.playSoundPlayer(ESSoundEvents.effect_add_negative);
+                ESSoundManager.playSoundPlayer(ESSoundEvents.effect_add_negative);
             }
             else
             {
-                ESSoundManager.playSoundWorld(ESSoundEvents.effect_add_positive, this.getPosition());
-                ESSoundManager.playSoundWorld(ESSoundEvents.effect_add_positive, this.getPosition());
+                ESSoundManager.playSoundPlayer(ESSoundEvents.effect_add_positive);
+                ESSoundManager.playSoundPlayer(ESSoundEvents.effect_add_positive);
             }
         }
     }
@@ -64,13 +64,13 @@ public abstract class EntityPlayerMixin extends EntityLivingBase
         {
             if (effect.getPotion().isBadEffect())
             {
-                ESSoundManager.playSoundWorld(ESSoundEvents.effect_remove_negative, this.getPosition());
-                ESSoundManager.playSoundWorld(ESSoundEvents.effect_remove_negative, this.getPosition());
+                ESSoundManager.playSoundPlayer(ESSoundEvents.effect_remove_negative);
+                ESSoundManager.playSoundPlayer(ESSoundEvents.effect_remove_negative);
             }
             else
             {
-                ESSoundManager.playSoundWorld(ESSoundEvents.effect_remove_positive, this.getPosition());
-                ESSoundManager.playSoundWorld(ESSoundEvents.effect_remove_positive, this.getPosition());
+                ESSoundManager.playSoundPlayer(ESSoundEvents.effect_remove_positive);
+                ESSoundManager.playSoundPlayer(ESSoundEvents.effect_remove_positive);
             }
         }
     }
