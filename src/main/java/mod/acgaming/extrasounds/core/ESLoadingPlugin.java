@@ -1,10 +1,10 @@
 package mod.acgaming.extrasounds.core;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Nullable;
 
+import com.google.common.collect.Lists;
 import net.minecraftforge.common.ForgeVersion;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 
@@ -30,7 +30,7 @@ public class ESLoadingPlugin implements IFMLLoadingPlugin, IEarlyMixinLoader
     @Override
     public String getModContainerClass()
     {
-        return ESContainer.class.getName();
+        return null;
     }
 
     @Nullable
@@ -55,8 +55,6 @@ public class ESLoadingPlugin implements IFMLLoadingPlugin, IEarlyMixinLoader
     @Override
     public List<String> getMixinConfigs()
     {
-        List<String> mixins = new ArrayList<>();
-        mixins.add("extrasounds.mixins.json");
-        return mixins;
+        return Lists.newArrayList("extrasounds.mixins.json");
     }
 }
