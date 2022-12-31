@@ -1,5 +1,5 @@
 {
-  "package": "mod.acgaming.extrasounds.mixin",
+  "package": "mod.acgaming.extrasounds.mixin.client",
   "refmap": "extrasounds.refmap.json",
   "minVersion": "0.8",
   "compatibilityLevel": "JAVA_8",
