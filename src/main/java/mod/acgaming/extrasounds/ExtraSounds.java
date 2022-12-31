@@ -30,11 +30,8 @@ public class ExtraSounds
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
-        if (Loader.isModLoaded("assetmover"))
-        {
-            assetmover = true;
-            LOGGER.info("AssetMover not detected, some sounds will be missing...");
-        }
+        if (Loader.isModLoaded("assetmover")) assetmover = true;
+        else LOGGER.warn("AssetMover not detected, some sounds will be missing...");
         if (event.getSide() == Side.CLIENT)
         {
             ESSoundEventsClient.preInit();
