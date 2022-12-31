@@ -1,11 +1,9 @@
 package mod.acgaming.extrasounds.sound;
 
 import java.util.*;
+import javax.annotation.Nullable;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.ISound;
-import net.minecraft.client.audio.PositionedSoundRecord;
-import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.*;
@@ -16,34 +14,22 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.UniversalBucket;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.oredict.OreDictionary;
 
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import mod.acgaming.extrasounds.ExtraSounds;
 import mod.acgaming.extrasounds.config.ESConfig;
-import paulscode.sound.SoundSystemConfig;
 
-@Mod.EventBusSubscriber(Side.CLIENT)
 public class ESSoundManager
 {
     public static Map<String, SoundEvent> soundCategoryMap = new Object2ObjectOpenHashMap<>();
     public static Map<Item, String> soundItemMap = new Object2ObjectOpenHashMap<>();
     public static Map<Item, SoundEvent> soundFinalMap = new Object2ObjectOpenHashMap<>();
     private static long lastPlayed = System.currentTimeMillis();
-
-    public static void preInit()
-    {
-        if (ESConfig.miscSettings.esSoundChannels)
-        {
-            SoundSystemConfig.setNumberNormalChannels(1024);
-            SoundSystemConfig.setNumberStreamingChannels(32);
-        }
-    }
 
     public static void init()
     {
@@ -58,11 +44,14 @@ public class ESSoundManager
 
         soundCategoryMap.put("dirt", ESSoundEvents.pick_place_dirt);
         soundCategoryMap.put("dust", ESSoundEvents.pick_place_dust);
-        soundCategoryMap.put("gem", ESSoundEvents.pick_place_gem);
+        if (ExtraSounds.assetmover) soundCategoryMap.put("gem", ESSoundEvents.pick_place_gem);
+        else soundCategoryMap.put("gem", ESSoundEvents.pick_place_generic);
         soundCategoryMap.put("grass", ESSoundEvents.pick_place_grass);
         soundCategoryMap.put("gravel", ESSoundEvents.pick_place_gravel);
-        soundCategoryMap.put("ingot", ESSoundEvents.pick_place_ingot);
-        soundCategoryMap.put("nugget", ESSoundEvents.pick_place_nugget);
+        if (ExtraSounds.assetmover) soundCategoryMap.put("ingot", ESSoundEvents.pick_place_ingot);
+        else soundCategoryMap.put("ingot", ESSoundEvents.pick_place_generic);
+        if (ExtraSounds.assetmover) soundCategoryMap.put("nugget", ESSoundEvents.pick_place_nugget);
+        else soundCategoryMap.put("nugget", ESSoundEvents.pick_place_generic);
         soundCategoryMap.put("sand", ESSoundEvents.pick_place_sand);
         soundCategoryMap.put("snow", ESSoundEvents.pick_place_snow);
         soundCategoryMap.put("stone", ESSoundEvents.pick_place_stone);
@@ -175,66 +164,61 @@ public class ESSoundManager
         }
     }
 
-    public static void playSoundPlayer(SoundEvent soundEvent, float pitch, float volume)
+    public static void playSoundPlayer(World world, EntityPlayer player, SoundEvent soundEvent, float pitch, float volume)
     {
+        if (player == null) return;
         long now = System.currentTimeMillis();
         if (now - lastPlayed > 5)
         {
-            Minecraft mc = Minecraft.getMinecraft();
-            EntityPlayerSP player = mc.player;
-            if (player != null) mc.getSoundHandler().playSound(new PositionedSoundRecord(soundEvent.getSoundName(), SoundCategory.PLAYERS, volume, pitch - 0.1F + randomOffset(), false, 0, ISound.AttenuationType.NONE, (float) player.posX, (float) player.posY + 32, (float) player.posZ));
-            else mc.getSoundHandler().playSound(new PositionedSoundRecord(soundEvent.getSoundName(), SoundCategory.MASTER, volume, pitch - 0.1F + randomOffset(), false, 0, ISound.AttenuationType.NONE, 0F, 0F, 0F));
+            world.playSound(player, player.getPosition(), soundEvent, SoundCategory.PLAYERS, volume, pitch - 0.1F + randomOffset(world));
             lastPlayed = now;
         }
     }
 
-    public static void playSoundPlayer(SoundEvent soundEvent)
+    public static void playSoundPlayer(World world, EntityPlayer player, SoundEvent soundEvent)
     {
+        if (player == null) return;
         long now = System.currentTimeMillis();
         if (now - lastPlayed > 5)
         {
-            Minecraft mc = Minecraft.getMinecraft();
-            EntityPlayerSP player = mc.player;
-            if (player != null) mc.getSoundHandler().playSound(new PositionedSoundRecord(soundEvent.getSoundName(), SoundCategory.PLAYERS, 1.0F, 0.9F + randomOffset(), false, 0, ISound.AttenuationType.NONE, (float) player.posX, (float) player.posY + 32, (float) player.posZ));
-            else mc.getSoundHandler().playSound(new PositionedSoundRecord(soundEvent.getSoundName(), SoundCategory.MASTER, 1.0F, 0.9F + randomOffset(), false, 0, ISound.AttenuationType.NONE, 0F, 0F, 0F));
+            world.playSound(player, player.getPosition(), soundEvent, SoundCategory.PLAYERS, 1.0F, 0.9F + randomOffset(world));
             lastPlayed = now;
         }
     }
 
-    public static void playSoundWorld(SoundEvent soundEvent, BlockPos blockPos, float pitch, float volume)
+    public static void playSoundWorld(World world, @Nullable EntityPlayer player, SoundEvent soundEvent, BlockPos blockPos, float pitch, float volume)
     {
-        if (Minecraft.getMinecraft().world == null) return;
+        if (world == null) return;
         long now = System.currentTimeMillis();
         if (now - lastPlayed > 5)
         {
-            Minecraft.getMinecraft().world.playSound(Minecraft.getMinecraft().player, blockPos, soundEvent, SoundCategory.BLOCKS, volume, pitch - 0.1F + randomOffset());
+            world.playSound(player, blockPos, soundEvent, SoundCategory.BLOCKS, volume, pitch - 0.1F + randomOffset(world));
             lastPlayed = now;
         }
     }
 
-    public static void playSoundWorld(SoundEvent soundEvent, BlockPos blockPos)
+    public static void playSoundWorld(World world, @Nullable EntityPlayer player, SoundEvent soundEvent, BlockPos blockPos)
     {
-        if (Minecraft.getMinecraft().world == null) return;
+        if (world == null) return;
         long now = System.currentTimeMillis();
         if (now - lastPlayed > 5)
         {
-            Minecraft.getMinecraft().world.playSound(Minecraft.getMinecraft().player, blockPos, soundEvent, SoundCategory.BLOCKS, 1.0F, 0.9F + randomOffset());
+            world.playSound(player, blockPos, soundEvent, SoundCategory.BLOCKS, 1.0F, 0.9F + randomOffset(world));
             lastPlayed = now;
         }
     }
 
-    public static float randomOffset()
-    {
-        return Minecraft.getMinecraft().world != null ? Minecraft.getMinecraft().world.rand.nextFloat() * 0.2F : 0.1F;
-    }
-
-    public static void playClickSound(ItemStack stackIn)
+    public static void playClickSound(World world, EntityPlayer player, ItemStack stackIn)
     {
         if (stackIn.isEmpty()) return;
-
         Item item = stackIn.getItem();
-        if (soundItemMap.containsKey(item)) playSoundPlayer(soundCategoryMap.get(soundItemMap.get(item)));
-        else if (soundFinalMap.containsKey(item)) playSoundPlayer(soundFinalMap.get(item), 2.0F, 0.4F);
-        else playSoundPlayer(ESSoundEvents.pick_place_generic);
+        if (ESSoundManager.soundItemMap.containsKey(item)) playSoundPlayer(world, player, ESSoundManager.soundCategoryMap.get(ESSoundManager.soundItemMap.get(item)));
+        else if (ESSoundManager.soundFinalMap.containsKey(item)) playSoundPlayer(world, player, ESSoundManager.soundFinalMap.get(item), 2.0F, 0.4F);
+        else playSoundPlayer(world, player, ESSoundEvents.pick_place_generic);
+    }
+
+    public static float randomOffset(World world)
+    {
+        return world != null ? world.rand.nextFloat() * 0.2F : 0.1F;
     }
 }

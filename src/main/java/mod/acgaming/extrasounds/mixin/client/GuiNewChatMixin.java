@@ -1,4 +1,4 @@
-package mod.acgaming.extrasounds.mixin;
+package mod.acgaming.extrasounds.mixin.client;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -7,7 +7,7 @@ import net.minecraft.util.text.ITextComponent;
 
 import mod.acgaming.extrasounds.config.ESConfig;
 import mod.acgaming.extrasounds.sound.ESSoundEvents;
-import mod.acgaming.extrasounds.sound.ESSoundManager;
+import mod.acgaming.extrasounds.sound.client.ESSoundManagerClient;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -23,7 +23,7 @@ public class GuiNewChatMixin
 
         if (ESConfig.soundToggles.esMessageSound)
         {
-            ESSoundManager.playSoundPlayer(ESSoundEvents.chat_message);
+            ESSoundManagerClient.playSoundPlayer(ESSoundEvents.chat_message);
         }
 
         if (ESConfig.soundToggles.esMentionSound)
@@ -37,7 +37,7 @@ public class GuiNewChatMixin
                 // AVOID SELF-PINGS
                 if (!msg.startsWith("<" + player.getName() + ">") || !msg.startsWith("<" + player.getDisplayNameString() + ">"))
                 {
-                    ESSoundManager.playSoundPlayer(ESSoundEvents.chat_mention);
+                    ESSoundManagerClient.playSoundPlayer(ESSoundEvents.chat_mention);
                 }
             }
         }

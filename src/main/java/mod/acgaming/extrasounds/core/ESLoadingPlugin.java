@@ -1,11 +1,13 @@
 package mod.acgaming.extrasounds.core;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Nullable;
 
-import com.google.common.collect.Lists;
 import net.minecraftforge.common.ForgeVersion;
+import net.minecraftforge.fml.relauncher.FMLLaunchHandler;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 
 import mod.acgaming.extrasounds.ExtraSounds;
@@ -16,6 +18,8 @@ import zone.rong.mixinbooter.IEarlyMixinLoader;
 @IFMLLoadingPlugin.SortingIndex(Integer.MIN_VALUE)
 public class ESLoadingPlugin implements IFMLLoadingPlugin, IEarlyMixinLoader
 {
+    public static final boolean isClient = FMLLaunchHandler.side().isClient();
+
     static
     {
         ExtraSounds.LOGGER.info("Extra Sounds Core initializing...");
@@ -55,6 +59,6 @@ public class ESLoadingPlugin implements IFMLLoadingPlugin, IEarlyMixinLoader
     @Override
     public List<String> getMixinConfigs()
     {
-        return Lists.newArrayList("extrasounds.mixins.json");
+        return isClient ? Arrays.asList("extrasounds.client.mixins.json", "extrasounds.server.mixins.json") : Collections.singletonList("extrasounds.server.mixins.json");
     }
 }

@@ -19,9 +19,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(ItemMinecart.class)
 public class ItemMinecartMixin
 {
-    @Inject(method = "onItemUse", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;spawnEntity(Lnet/minecraft/entity/Entity;)Z"))
+    @Inject(method = "onItemUse", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;shrink(I)V"))
     public void esPlaceMinecartSound(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ, CallbackInfoReturnable<EnumActionResult> cir)
     {
-        if (ESConfig.soundToggles.esPlaceMinecartSound) ESSoundManager.playSoundWorld(ESSoundEvents.place_minecart, pos);
+        if (ESConfig.soundToggles.esPlaceMinecartSound) ESSoundManager.playSoundWorld(worldIn, player, ESSoundEvents.place_minecart, pos);
     }
 }

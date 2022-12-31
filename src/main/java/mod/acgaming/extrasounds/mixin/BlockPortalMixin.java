@@ -18,6 +18,6 @@ public class BlockPortalMixin
     @Inject(method = "trySpawnPortal", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockPortal$Size;placePortalBlocks()V"))
     public void esNetherPortal(World worldIn, BlockPos pos, CallbackInfoReturnable<Boolean> cir)
     {
-        if (ESConfig.soundToggles.esNetherPortalSound) ESSoundManager.playSoundWorld(ESSoundEvents.nether_portal_spawn, pos);
+        if (ESConfig.soundToggles.esNetherPortalSound) ESSoundManager.playSoundWorld(worldIn, null, ESSoundEvents.nether_portal_spawn, pos);
     }
 }

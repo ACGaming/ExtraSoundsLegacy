@@ -7,32 +7,45 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.relauncher.Side;
 
 import mod.acgaming.extrasounds.sound.ESOreDictionary;
 import mod.acgaming.extrasounds.sound.ESSoundEvents;
 import mod.acgaming.extrasounds.sound.ESSoundManager;
+import mod.acgaming.extrasounds.sound.client.ESSoundEventsClient;
+import mod.acgaming.extrasounds.sound.client.ESSoundManagerClient;
 
-@Mod(modid = ExtraSounds.MODID, name = ExtraSounds.NAME, version = ExtraSounds.VERSION, acceptedMinecraftVersions = "[1.12.2]", dependencies = ExtraSounds.DEPENDENCIES, clientSideOnly = true)
+@Mod(modid = ExtraSounds.MODID, name = ExtraSounds.NAME, version = ExtraSounds.VERSION, acceptedMinecraftVersions = "[1.12.2]", dependencies = ExtraSounds.DEPENDENCIES)
 public class ExtraSounds
 {
     public static final String MODID = "extrasounds";
     public static final String NAME = "Extra Sounds";
-    public static final String VERSION = "1.12.2-1.3.3";
-    public static final String DEPENDENCIES = "required-after:mixinbooter;required-after:assetmover;after:jei;after:asmc;after:dsurround";
+    public static final String VERSION = "1.12.2-1.4.0";
+    public static final String DEPENDENCIES = "required-after:mixinbooter;after:assetmover;after:jei;after:asmc;after:dsurround";
     public static final Logger LOGGER = LogManager.getLogger(NAME);
     public static boolean asmc = false;
+    public static boolean assetmover = false;
     public static boolean dsurround = false;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
+        if (Loader.isModLoaded("assetmover"))
+        {
+            assetmover = true;
+            LOGGER.info("AssetMover not detected, some sounds will be missing...");
+        }
+        if (event.getSide() == Side.CLIENT)
+        {
+            ESSoundEventsClient.preInit();
+            ESSoundManagerClient.preInit();
+        }
         ESSoundEvents.preInit();
-        ESSoundManager.preInit();
         LOGGER.info("Extra Sounds pre-initialized");
     }
 
     @Mod.EventHandler
-    public void init(FMLInitializationEvent event)
+    public void initClient(FMLInitializationEvent event)
     {
         ESOreDictionary.init();
         ESSoundManager.init();

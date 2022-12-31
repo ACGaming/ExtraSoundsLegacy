@@ -20,12 +20,12 @@ public class BlockJukeboxMixin
     @Inject(method = "insertRecord", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockJukebox$TileEntityJukebox;setRecord(Lnet/minecraft/item/ItemStack;)V"))
     public void esJukeboxInsert(World worldIn, BlockPos pos, IBlockState state, ItemStack recordStack, CallbackInfo ci)
     {
-        if (ESConfig.soundToggles.esJukeboxInteractSound) ESSoundManager.playSoundWorld(ESSoundEvents.jukebox_insert, pos);
+        if (ESConfig.soundToggles.esJukeboxInteractSound) ESSoundManager.playSoundWorld(worldIn, null, ESSoundEvents.jukebox_insert, pos);
     }
 
     @Inject(method = "dropRecord", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockJukebox$TileEntityJukebox;setRecord(Lnet/minecraft/item/ItemStack;)V"))
     public void esJukeboxEject(World worldIn, BlockPos pos, IBlockState state, CallbackInfo ci)
     {
-        if (ESConfig.soundToggles.esJukeboxInteractSound) ESSoundManager.playSoundWorld(ESSoundEvents.jukebox_eject, pos);
+        if (ESConfig.soundToggles.esJukeboxInteractSound) ESSoundManager.playSoundWorld(worldIn, null, ESSoundEvents.jukebox_eject, pos);
     }
 }

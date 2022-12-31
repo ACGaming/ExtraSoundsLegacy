@@ -24,7 +24,7 @@ public abstract class ItemBowMixin
     {
         if (worldIn.isRemote && ESConfig.soundToggles.esPullBowSound)
         {
-            if (!this.findAmmo(playerIn).isEmpty() || playerIn.capabilities.isCreativeMode) ESSoundManager.playSoundPlayer(ESSoundEvents.pull_bow);
+            if (!this.findAmmo(playerIn).isEmpty() || playerIn.capabilities.isCreativeMode) ESSoundManager.playSoundWorld(worldIn, playerIn, ESSoundEvents.pull_bow, playerIn.getPosition());
         }
     }
 

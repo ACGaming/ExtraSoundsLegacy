@@ -1,4 +1,4 @@
-package mod.acgaming.extrasounds.mixin;
+package mod.acgaming.extrasounds.mixin.client;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiInventory;
@@ -6,7 +6,7 @@ import net.minecraft.inventory.ClickType;
 import net.minecraft.inventory.Slot;
 
 import mod.acgaming.extrasounds.config.ESConfig;
-import mod.acgaming.extrasounds.sound.ESSoundManager;
+import mod.acgaming.extrasounds.sound.client.ESSoundManagerClient;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -23,12 +23,12 @@ public class GuiInventoryMixin
             if (!Minecraft.getMinecraft().player.inventory.getItemStack().isEmpty())
             {
                 // PLACE SOUND
-                ESSoundManager.playClickSound(Minecraft.getMinecraft().player.inventory.getItemStack());
+                ESSoundManagerClient.playClickSound(Minecraft.getMinecraft().player.inventory.getItemStack());
             }
             else if (!slotIn.getStack().isEmpty())
             {
                 // PICK SOUND
-                ESSoundManager.playClickSound(slotIn.getStack());
+                ESSoundManagerClient.playClickSound(slotIn.getStack());
             }
         }
     }

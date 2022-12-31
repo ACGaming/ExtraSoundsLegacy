@@ -1,12 +1,9 @@
 package mod.acgaming.extrasounds.sound;
 
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.oredict.OreDictionary;
 
-@Mod.EventBusSubscriber(Side.CLIENT)
 public class ESOreDictionary
 {
     public static void init()

@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
+import mod.acgaming.extrasounds.ExtraSounds;
 import mod.acgaming.extrasounds.config.ESConfig;
 import mod.acgaming.extrasounds.sound.ESSoundEvents;
 import mod.acgaming.extrasounds.sound.ESSoundManager;
@@ -32,7 +33,7 @@ public abstract class EntityPlayerMixin extends EntityLivingBase
             {
                 float range = 0.1F;
                 float pitch = 1.0F + range * (1.0F * droppedItem.getItem().getItemStackLimit() / droppedItem.getCount()) - range / 2;
-                ESSoundManager.playSoundPlayer(ESSoundEvents.drop_item, pitch, 1.0F);
+                ESSoundManager.playSoundWorld(world, null, ESSoundEvents.drop_item, this.getPosition(), pitch, 1.0F);
             }
         }
     }
@@ -41,17 +42,17 @@ public abstract class EntityPlayerMixin extends EntityLivingBase
     public void onNewPotionEffect(PotionEffect id)
     {
         super.onNewPotionEffect(id);
-        if (ESConfig.soundToggles.esPotionSound)
+        if (ESConfig.soundToggles.esPotionSound && ExtraSounds.assetmover)
         {
             if (id.getPotion().isBadEffect())
             {
-                ESSoundManager.playSoundPlayer(ESSoundEvents.effect_add_negative);
-                ESSoundManager.playSoundPlayer(ESSoundEvents.effect_add_negative);
+                ESSoundManager.playSoundWorld(world, null, ESSoundEvents.effect_add_negative, this.getPosition());
+                ESSoundManager.playSoundWorld(world, null, ESSoundEvents.effect_add_negative, this.getPosition());
             }
             else
             {
-                ESSoundManager.playSoundPlayer(ESSoundEvents.effect_add_positive);
-                ESSoundManager.playSoundPlayer(ESSoundEvents.effect_add_positive);
+                ESSoundManager.playSoundWorld(world, null, ESSoundEvents.effect_add_positive, this.getPosition());
+                ESSoundManager.playSoundWorld(world, null, ESSoundEvents.effect_add_positive, this.getPosition());
             }
         }
     }
@@ -60,17 +61,17 @@ public abstract class EntityPlayerMixin extends EntityLivingBase
     public void onFinishedPotionEffect(PotionEffect effect)
     {
         super.onFinishedPotionEffect(effect);
-        if (ESConfig.soundToggles.esPotionSound)
+        if (ESConfig.soundToggles.esPotionSound && ExtraSounds.assetmover)
         {
             if (effect.getPotion().isBadEffect())
             {
-                ESSoundManager.playSoundPlayer(ESSoundEvents.effect_remove_negative);
-                ESSoundManager.playSoundPlayer(ESSoundEvents.effect_remove_negative);
+                ESSoundManager.playSoundWorld(world, null, ESSoundEvents.effect_remove_negative, this.getPosition());
+                ESSoundManager.playSoundWorld(world, null, ESSoundEvents.effect_remove_negative, this.getPosition());
             }
             else
             {
-                ESSoundManager.playSoundPlayer(ESSoundEvents.effect_remove_positive);
-                ESSoundManager.playSoundPlayer(ESSoundEvents.effect_remove_positive);
+                ESSoundManager.playSoundWorld(world, null, ESSoundEvents.effect_remove_positive, this.getPosition());
+                ESSoundManager.playSoundWorld(world, null, ESSoundEvents.effect_remove_positive, this.getPosition());
             }
         }
     }

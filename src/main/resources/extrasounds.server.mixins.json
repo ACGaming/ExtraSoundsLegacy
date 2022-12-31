@@ -1,0 +1,7 @@
+{
+  "package": "mod.acgaming.extrasounds.mixin",
+  "refmap": "extrasounds.refmap.json",
+  "minVersion": "0.8",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": ["BlockFlowerPotMixin", "BlockJukeboxMixin", "BlockPortalMixin", "EntityEnderPearlMixin", "EntityPlayerMixin", "InventoryPlayerMixin", "ItemBoatMixin", "ItemBowMixin", "ItemMinecartMixin", "ItemMonsterPlacerMixin", "ItemSeedsMixin", "MobSpawnerBaseLogicMixin", "SlotCraftingMixin", "TileEntityBeaconMixin"]
+}

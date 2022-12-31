@@ -49,12 +49,12 @@ public abstract class TileEntityBeaconMixin extends TileEntityLockable implement
     @Inject(method = "updateBeacon", at = @At(value = "TAIL"))
     public void esBeaconSoundAmbient(CallbackInfo ci)
     {
-        if (ESConfig.soundToggles.esBeaconSound && !ExtraSounds.asmc && this.isComplete)
+        if (ESConfig.soundToggles.esBeaconSound && !ExtraSounds.asmc && ExtraSounds.assetmover && this.isComplete)
         {
-            ESSoundManager.playSoundWorld(ESSoundEvents.beacon_ambient, this.pos);
+            ESSoundManager.playSoundWorld(world, null, ESSoundEvents.beacon_ambient, this.pos);
             if (this.primaryEffect != primaryEffectCached || this.secondaryEffect != secondaryEffectCached)
             {
-                ESSoundManager.playSoundWorld(ESSoundEvents.beacon_power, this.pos);
+                ESSoundManager.playSoundWorld(world, null, ESSoundEvents.beacon_power, this.pos);
             }
             primaryEffectCached = this.primaryEffect;
             secondaryEffectCached = this.secondaryEffect;
@@ -64,15 +64,15 @@ public abstract class TileEntityBeaconMixin extends TileEntityLockable implement
     @Inject(method = "shouldBeamRender", at = @At(value = "HEAD"))
     public void esBeaconSound(CallbackInfoReturnable<Float> cir)
     {
-        if (ESConfig.soundToggles.esBeaconSound && !ExtraSounds.asmc)
+        if (ESConfig.soundToggles.esBeaconSound && !ExtraSounds.asmc && ExtraSounds.assetmover)
         {
             if (this.isComplete && !currentState)
             {
-                ESSoundManager.playSoundWorld(ESSoundEvents.beacon_activate, this.pos);
+                ESSoundManager.playSoundWorld(world, null, ESSoundEvents.beacon_activate, this.pos);
             }
             else if (!this.isComplete && currentState)
             {
-                ESSoundManager.playSoundWorld(ESSoundEvents.beacon_deactivate, this.pos);
+                ESSoundManager.playSoundWorld(world, null, ESSoundEvents.beacon_deactivate, this.pos);
             }
             currentState = this.isComplete;
         }
@@ -81,9 +81,9 @@ public abstract class TileEntityBeaconMixin extends TileEntityLockable implement
     @Inject(method = "setInventorySlotContents", at = @At(value = "TAIL"))
     public void esBeaconSoundPower(int index, ItemStack stack, CallbackInfo ci)
     {
-        if (ESConfig.soundToggles.esBeaconSound && !ExtraSounds.asmc)
+        if (ESConfig.soundToggles.esBeaconSound && !ExtraSounds.asmc && ExtraSounds.assetmover)
         {
-            ESSoundManager.playSoundWorld(ESSoundEvents.beacon_power, this.pos);
+            ESSoundManager.playSoundWorld(world, null, ESSoundEvents.beacon_power, this.pos);
         }
     }
 }

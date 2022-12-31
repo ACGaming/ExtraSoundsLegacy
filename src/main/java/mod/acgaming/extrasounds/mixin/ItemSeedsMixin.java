@@ -25,15 +25,15 @@ public class ItemSeedsMixin
     @Inject(method = "onItemUse", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;shrink(I)V"))
     public void esCropSound(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ, CallbackInfoReturnable<EnumActionResult> cir)
     {
-        if (worldIn.isRemote && ESConfig.soundToggles.esCropSound && !ExtraSounds.asmc)
+        if (worldIn.isRemote && ESConfig.soundToggles.esCropSound && !ExtraSounds.asmc && ExtraSounds.assetmover)
         {
             if (worldIn.getBlockState(pos).getBlock() instanceof BlockFarmland)
             {
-                ESSoundManager.playSoundWorld(ESSoundEvents.plant_crop, pos);
+                ESSoundManager.playSoundWorld(worldIn, player, ESSoundEvents.plant_crop, pos);
             }
             else if (worldIn.getBlockState(pos).getBlock() instanceof BlockSoulSand)
             {
-                ESSoundManager.playSoundWorld(ESSoundEvents.plant_netherwart, pos);
+                ESSoundManager.playSoundWorld(worldIn, player, ESSoundEvents.plant_netherwart, pos);
             }
         }
     }
