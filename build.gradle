@@ -66,7 +66,7 @@ repositories {
 dependencies {
     deobfCompile 'zone.rong:mixinbooter:7.0'
     deobfCompile 'curse.maven:had-enough-items-557549:4109510'
-    deobfCompile 'com.cleanroommc:assetmover:2.1'
+    deobfCompile 'com.cleanroommc:assetmover:2.4'
 }
 
 mixin {

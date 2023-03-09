@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -30,13 +31,7 @@ public class ExtraSounds
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
-        if (Loader.isModLoaded("assetmover")) assetmover = true;
-        else LOGGER.warn("AssetMover not detected, some sounds will be missing...");
-        if (event.getSide() == Side.CLIENT)
-        {
-            ESSoundEventsClient.preInit();
-            ESSoundManagerClient.preInit();
-        }
+        if (event.getSide() == Side.CLIENT) ESSoundManagerClient.preInit();
         ESSoundEvents.preInit();
         LOGGER.info("Extra Sounds pre-initialized");
     }
@@ -63,5 +58,21 @@ public class ExtraSounds
             LOGGER.info("Dynamic Surroundings detected, disabling respective sounds...");
         }
         LOGGER.info("Extra Sounds post-initialized");
+    }
+
+    @Mod.EventHandler
+    public void fmlConstruct(FMLConstructionEvent event)
+    {
+        try
+        {
+            Class.forName("com.cleanroommc.assetmover.AssetMoverAPI");
+            assetmover = true;
+            LOGGER.info("AssetMover detected, enabling compatibility...");
+        }
+        catch (ClassNotFoundException ignored)
+        {
+            LOGGER.warn("AssetMover not detected, some sounds will be missing...");
+        }
+        if (event.getSide() == Side.CLIENT) ESSoundEventsClient.getBackportedSounds();
     }
 }

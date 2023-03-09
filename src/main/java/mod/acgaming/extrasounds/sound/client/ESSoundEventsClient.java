@@ -8,11 +8,6 @@ import mod.acgaming.extrasounds.ExtraSounds;
 
 public class ESSoundEventsClient
 {
-    public static void preInit()
-    {
-        if (ExtraSounds.assetmover) getBackportedSounds();
-    }
-
     public static void getBackportedSounds()
     {
         Map<String, String> backportMap = new Object2ObjectOpenHashMap<>();
@@ -94,8 +89,8 @@ public class ESSoundEventsClient
         backportMap.put("assets/minecraft/sounds/item/bonemeal/bonemeal4.ogg", "assets/extrasounds/sounds/item/bonemeal/bonemeal4.ogg");
         backportMap.put("assets/minecraft/sounds/item/bonemeal/bonemeal5.ogg", "assets/extrasounds/sounds/item/bonemeal/bonemeal5.ogg");
 
-        ExtraSounds.LOGGER.info("Downloading Minecraft 1.19.2 sounds, this could take a while...");
-        AssetMoverAPI.fromMinecraft("1.19.2", backportMap);
+        ExtraSounds.LOGGER.info("Downloading Minecraft 1.19.3 sounds, this could take a while...");
+        AssetMoverAPI.fromMinecraft("1.19.3", backportMap);
         ExtraSounds.LOGGER.info("Downloading finished!");
     }
 }
