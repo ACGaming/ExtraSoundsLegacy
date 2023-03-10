@@ -121,7 +121,7 @@ public class ESConfig
 
         @Config.Name("Potion Sound")
         @Config.Comment("Play a sound when potion effects get added or removed from the player")
-        public boolean esPotionSound = true;
+        public boolean esPotionSound = false;
     }
 
     public static class SoundCategories
