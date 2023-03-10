@@ -68,11 +68,11 @@ public class ExtraSounds
             Class.forName("com.cleanroommc.assetmover.AssetMoverAPI");
             assetmover = true;
             LOGGER.info("AssetMover detected, enabling compatibility...");
+            if (event.getSide() == Side.CLIENT) ESSoundEventsClient.getBackportedSounds();
         }
         catch (ClassNotFoundException ignored)
         {
             LOGGER.warn("AssetMover not detected, some sounds will be missing...");
         }
-        if (event.getSide() == Side.CLIENT) ESSoundEventsClient.getBackportedSounds();
     }
 }
