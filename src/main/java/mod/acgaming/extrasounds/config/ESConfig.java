@@ -122,18 +122,27 @@ public class ESConfig
         @Config.Name("Potion Sound")
         @Config.Comment("Play a sound when potion effects get added or removed from the player")
         public boolean esPotionSound = false;
+
+        @Config.Name("Combination Step Sound")
+        @Config.Comment
+            ({
+                "Recreates the combination step sound introduced in snapshot 23w12a",
+                "Plays an additional muffled step sound for blocks beneath carpets and snow"
+            })
+        public boolean esCombinationStepSound = true;
     }
 
     public static class SoundCategories
     {
         @Config.Name("Pick/Place Sounds")
-        @Config.Comment({
-            "Categories of sounds when picking and placing items in GUIs",
-            "Available categories: dirt, dust, gem, grass, gravel, ingot, nugget, sand, snow, stone, wood, wool",
-            "Syntax: CATEGORY;REGISTRY_NAME",
-            "Use * for ore dictionary wildcards",
-            "Examples | ingot;ore:example_ore | gem;mod_id:example_item"
-        })
+        @Config.Comment
+            ({
+                "Categories of sounds when picking and placing items in GUIs",
+                "Available categories: dirt, dust, gem, grass, gravel, ingot, nugget, sand, snow, stone, wood, wool",
+                "Syntax: CATEGORY;REGISTRY_NAME",
+                "Use * for ore dictionary wildcards",
+                "Examples | ingot;ore:example_ore | gem;mod_id:example_item"
+            })
         public String[] soundArray = new String[]
             {
                 "dust;ore:dust*",
@@ -173,10 +182,11 @@ public class ESConfig
     public static class MiscSettings
     {
         @Config.Name("Increase Sound Channels")
-        @Config.Comment({
-            "Increase sound channels to improve audio playback",
-            "Disable this if you're facing sound issues or have another mod installed handling this"
-        })
+        @Config.Comment
+            ({
+                "Increase sound channels to improve audio playback",
+                "Disable this if you're facing sound issues or have another mod installed handling this"
+            })
         public boolean esSoundChannels = true;
     }
 
