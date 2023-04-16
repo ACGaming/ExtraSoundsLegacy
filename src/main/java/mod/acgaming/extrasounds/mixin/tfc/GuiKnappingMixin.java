@@ -25,7 +25,7 @@ public class GuiKnappingMixin
     {
         if (type.equals(KnappingType.CLAY) || type.equals(KnappingType.FIRE_CLAY))
         {
-            ESSoundManagerClient.playSoundPlayer(SoundEvents.BLOCK_GRAVEL_BREAK, 1.2F, 0.8F);
+            ESSoundManagerClient.playSoundPlayer(SoundEvents.BLOCK_GRAVEL_BREAK, 1.2F, 0.6F);
         }
         else if (type.equals(KnappingType.STONE))
         {
@@ -33,7 +33,7 @@ public class GuiKnappingMixin
         }
         else if (type.equals(KnappingType.LEATHER))
         {
-            ESSoundManagerClient.playSoundPlayer(SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 2, 0.8F);
+            ESSoundManagerClient.playSoundPlayer(SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 2, 1);
         }
         else
         {
