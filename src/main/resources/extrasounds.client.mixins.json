@@ -3,5 +3,5 @@
   "refmap": "extrasounds.refmap.json",
   "minVersion": "0.8",
   "compatibilityLevel": "JAVA_8",
-  "client": ["GuiContainerCreativeMixin", "GuiContainerMixin", "GuiInventoryMixin", "GuiNewChatMixin", "GuiRecipeBookMixin", "GuiScreenBookMixin", "GuiTextFieldMixin", "ItemDyeMixin", "MinecraftMixin"]
+  "client": ["GuiContainerCreativeMixin", "GuiContainerMixin", "GuiInventoryMixin", "GuiNewChatMixin", "GuiRecipeBookMixin", "GuiScreenBookMixin", "GuiScreenMixin", "GuiTextFieldMixin", "ItemDyeMixin", "MinecraftMixin"]
 }

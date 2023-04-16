@@ -1,4 +1,4 @@
-package mod.acgaming.extrasounds.mixin.client;
+package mod.acgaming.extrasounds.mixin.jei;
 
 import mezz.jei.gui.overlay.IngredientGridWithNavigation;
 import mezz.jei.input.IPaged;
