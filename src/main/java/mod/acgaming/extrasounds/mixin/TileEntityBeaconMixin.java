@@ -46,7 +46,7 @@ public abstract class TileEntityBeaconMixin extends TileEntityLockable implement
     @Nullable
     private Potion secondaryEffect;
 
-    @Inject(method = "updateBeacon", at = @At(value = "TAIL"))
+    @Inject(method = "updateBeacon", at = @At(value = "INVOKE", target = "Lnet/minecraft/tileentity/TileEntityBeacon;addEffectsToPlayers()V"))
     public void esBeaconSoundAmbient(CallbackInfo ci)
     {
         if (ESConfig.soundToggles.esBeaconSound && !ExtraSounds.asmc && ExtraSounds.assetmover && this.isComplete)

@@ -18,9 +18,9 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'org.spongepowered.mixin'
 
-version = '1.12.2-1.4.1'
+version = '1.4.2'
 group = 'mod.acgaming.extrasounds'
-archivesBaseName = 'ExtraSounds'
+archivesBaseName = 'ExtraSounds-1.12.2'
 
 sourceCompatibility = targetCompatibility = '1.8'
 compileJava {
