@@ -25,15 +25,15 @@ public class ESConfig
     {
         @Config.Name("Item Drop Sound")
         @Config.Comment("Play a sound when dropping items")
-        public boolean esDropItemSound = true;
+        public boolean esDropItemSound = false;
 
         @Config.Name("Item Pick/Place Sound")
         @Config.Comment("Play a sound when picking and placing items in GUIs")
-        public boolean esPickPlaceSound = true;
+        public boolean esPickPlaceSound = false;
 
         @Config.Name("Open/Close GUI Sound")
         @Config.Comment("Play a sound when opening and closing GUIs")
-        public boolean esOpenCloseGUISound = true;
+        public boolean esOpenCloseGUISound = false;
 
         @Config.Name("Chat Message Sound")
         @Config.Comment("Play a sound on chat messages")
@@ -109,15 +109,15 @@ public class ESConfig
 
         @Config.Name("Nether Portal Sound")
         @Config.Comment("Play a sound when a nether portal is constructed")
-        public boolean esNetherPortalSound = true;
+        public boolean esNetherPortalSound = false;
 
         @Config.Name("Crafting Sound")
         @Config.Comment("Play a sound when taking the craft result")
-        public boolean esCraftingSound = true;
+        public boolean esCraftingSound = false;
 
         @Config.Name("Beacon Sound")
         @Config.Comment("Play a sound when activating, deactivating and running a beacon")
-        public boolean esBeaconSound = true;
+        public boolean esBeaconSound = false;
 
         @Config.Name("Potion Sound")
         @Config.Comment("Play a sound when potion effects get added or removed from the player")

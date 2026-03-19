@@ -44,14 +44,11 @@ public class ESSoundManager
 
         soundCategoryMap.put("dirt", ESSoundEvents.pick_place_dirt);
         soundCategoryMap.put("dust", ESSoundEvents.pick_place_dust);
-        if (ExtraSounds.assetmover) soundCategoryMap.put("gem", ESSoundEvents.pick_place_gem);
-        else soundCategoryMap.put("gem", ESSoundEvents.pick_place_generic);
+        soundCategoryMap.put("gem", ESSoundEvents.pick_place_gem);
         soundCategoryMap.put("grass", ESSoundEvents.pick_place_grass);
         soundCategoryMap.put("gravel", ESSoundEvents.pick_place_gravel);
-        if (ExtraSounds.assetmover) soundCategoryMap.put("ingot", ESSoundEvents.pick_place_ingot);
-        else soundCategoryMap.put("ingot", ESSoundEvents.pick_place_generic);
-        if (ExtraSounds.assetmover) soundCategoryMap.put("nugget", ESSoundEvents.pick_place_nugget);
-        else soundCategoryMap.put("nugget", ESSoundEvents.pick_place_generic);
+        soundCategoryMap.put("ingot", ESSoundEvents.pick_place_ingot);
+        soundCategoryMap.put("nugget", ESSoundEvents.pick_place_nugget);
         soundCategoryMap.put("sand", ESSoundEvents.pick_place_sand);
         soundCategoryMap.put("snow", ESSoundEvents.pick_place_snow);
         soundCategoryMap.put("stone", ESSoundEvents.pick_place_stone);

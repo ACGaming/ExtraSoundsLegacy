@@ -49,7 +49,7 @@ public abstract class TileEntityBeaconMixin extends TileEntityLockable implement
     @Inject(method = "updateBeacon", at = @At(value = "INVOKE", target = "Lnet/minecraft/tileentity/TileEntityBeacon;addEffectsToPlayers()V"))
     public void esBeaconSoundAmbient(CallbackInfo ci)
     {
-        if (ESConfig.soundToggles.esBeaconSound && !ExtraSounds.asmc && ExtraSounds.assetmover && this.isComplete)
+        if (ESConfig.soundToggles.esBeaconSound && !ExtraSounds.asmc && this.isComplete)
         {
             ESSoundManager.playSoundWorld(world, null, ESSoundEvents.beacon_ambient, this.pos);
             if (this.primaryEffect != primaryEffectCached || this.secondaryEffect != secondaryEffectCached)
@@ -64,7 +64,7 @@ public abstract class TileEntityBeaconMixin extends TileEntityLockable implement
     @Inject(method = "shouldBeamRender", at = @At(value = "HEAD"))
     public void esBeaconSound(CallbackInfoReturnable<Float> cir)
     {
-        if (ESConfig.soundToggles.esBeaconSound && !ExtraSounds.asmc && ExtraSounds.assetmover)
+        if (ESConfig.soundToggles.esBeaconSound && !ExtraSounds.asmc)
         {
             if (this.isComplete && !currentState)
             {
@@ -81,7 +81,7 @@ public abstract class TileEntityBeaconMixin extends TileEntityLockable implement
     @Inject(method = "setInventorySlotContents", at = @At(value = "TAIL"))
     public void esBeaconSoundPower(int index, ItemStack stack, CallbackInfo ci)
     {
-        if (ESConfig.soundToggles.esBeaconSound && !ExtraSounds.asmc && ExtraSounds.assetmover)
+        if (ESConfig.soundToggles.esBeaconSound && !ExtraSounds.asmc)
         {
             ESSoundManager.playSoundWorld(world, null, ESSoundEvents.beacon_power, this.pos);
         }

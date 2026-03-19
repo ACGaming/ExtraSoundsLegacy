@@ -7,7 +7,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
-import mod.acgaming.extrasounds.ExtraSounds;
 import mod.acgaming.extrasounds.config.ESConfig;
 import mod.acgaming.extrasounds.sound.ESSoundEvents;
 import mod.acgaming.extrasounds.sound.ESSoundManager;
@@ -42,7 +41,7 @@ public abstract class EntityPlayerMixin extends EntityLivingBase
     public void onNewPotionEffect(PotionEffect id)
     {
         super.onNewPotionEffect(id);
-        if (ESConfig.soundToggles.esPotionSound && ExtraSounds.assetmover)
+        if (ESConfig.soundToggles.esPotionSound)
         {
             if (id.getPotion().isBadEffect())
             {
@@ -61,7 +60,7 @@ public abstract class EntityPlayerMixin extends EntityLivingBase
     public void onFinishedPotionEffect(PotionEffect effect)
     {
         super.onFinishedPotionEffect(effect);
-        if (ESConfig.soundToggles.esPotionSound && ExtraSounds.assetmover)
+        if (ESConfig.soundToggles.esPotionSound)
         {
             if (effect.getPotion().isBadEffect())
             {
